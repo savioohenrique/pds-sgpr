@@ -56,4 +56,4 @@ insert into rota_cidades values('a-n', 'Assu'),
 ('s-a', 'Apodi')
 ;
 
--- select * from rota as r, rota_cidades as rc where r.id_rota = rc.id_rota; 
+/*select * from rota as r, rota_cidades as rc where r.id_rota = rc.id_rota; */
