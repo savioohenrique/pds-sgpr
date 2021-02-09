@@ -1,2 +1,2 @@
-# pds-sgpr
+# SGPR
 Projeto da Disciplina PDS
