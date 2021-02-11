@@ -27,25 +27,48 @@ create table onibus(
     primary key(num_placa)
 );
 
-create table rota(
-	id_rota varchar(10),
-    nome_rota varchar(45),
-    origem varchar(45) not null,
-    destino varchar(45) not null,
+create table cidades(
+	id_cidade int auto_increment,
+    nome varchar(100),
     
-    primary key(id_rota)
+    primary key(id_cidade)
 );
 
 /*As tabelas a partir daqui fazem referencia as que estão acima.*/ 
 
+create table rota(
+	id_rota varchar(10),
+    nome_rota varchar(45),
+    origem int not null,
+    destino int not null,
+    
+    primary key(id_rota),
+    
+    foreign key(origem)
+		references cidades(id_cidade)
+	on update cascade
+    on delete cascade,
+    
+    foreign key(destino)
+		references cidades(id_cidade)
+	on update cascade
+    on delete cascade
+);
+
 create table rota_cidades(
 	id_rota varchar(10),
-	nome_cidade varchar(45),
+	id_cidade int,
+    num_seq int not null,
     
-    primary key(nome_cidade, id_rota),
+    primary key(id_rota, id_cidade),
     
     foreign key(id_rota)
 		references rota(id_rota)
+	on update cascade
+    on delete cascade,
+    
+    foreign key(id_cidade)
+		references cidades(id_cidade)
 	on update cascade
     on delete cascade
 );

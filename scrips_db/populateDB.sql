@@ -1,3 +1,4 @@
+use sgpr;
 /*Insere dados no banco*/
 
 insert into passageiro values('95819702409', 'Julio Cauã Cardoso', '131231231', 'Julio@gmail.com'), 
@@ -24,36 +25,53 @@ insert into onibus values('IDB2528', 30, 'medio porte'),
 ('JTT1442', 999, 'circular')
 ;
 
-insert into rota values('a-n', 'Assu-Natal', 'Assu', 'Natal'),
-('m-n', 'Mossoro-Natal', 'Mossoro', 'Natal'),
-('mc-n', 'Macau-Natal', 'Macau', 'Natal'),
-('s-a', 'Serra do Mel-Apodi', 'Serra do mel', 'Apodi')
+insert into cidades (nome) values('Natal'),
+('Assu'),
+('Mossoro'),
+('Macau'),
+('Serra do Mel'),
+('Apodi'),
+('Itaja'),
+('Fernando Pedroza'),
+('Lajes'),
+('Riachuelo'),
+('Macaiba'),
+('Jandaíra'),
+('João Câmara'),
+('Taipu'),
+('Ceará-Mirim')
 ;
 
-insert into rota_cidades values('a-n', 'Assu'),
-('a-n', 'Itaja'),
-('a-n', 'Fernando Pedroza'),
-('a-n', 'Lajes'),
-('a-n', 'Riachuelo'),
-('a-n', 'Macaiba'),
-('a-n', 'Natal'),
-('m-n', 'Mosorro'),
-('m-n', 'Assu'),
-('m-n', 'Itaja'),
-('m-n', 'Fernando Pedroza'),
-('m-n', 'Lajes'),
-('m-n', 'Riachuelo'),
-('m-n', 'Macaiba'),
-('m-n', 'Natal'),
-('mc-n', 'Macau'),
-('mc-n', 'Jandaíra'),
-('mc-n', 'João Câmara'),
-('mc-n', 'Taipu'),
-('mc-n', 'Ceará-Mirim'),
-('mc-n', 'Natal'),
-('s-a', 'Serra do Mel'),
-('s-a', 'Mossoro'),
-('s-a', 'Apodi')
+insert into rota values('a-n', 'Assu-Natal', 2, 1),
+('m-n', 'Mossoro-Natal', 3, 1),
+('mc-n', 'Macau-Natal', 4, 1),
+('s-a', 'Serra do Mel-Apodi', 5, 6)
+;
+
+insert into rota_cidades values('a-n', 2, 1),
+('a-n', 7, 2),
+('a-n', 8, 3),
+('a-n', 9, 4),
+('a-n', 10, 5),
+('a-n', 11, 6),
+('a-n', 1, 7),
+('m-n', 3, 1),
+('m-n', 2, 2),
+('m-n', 7, 3),
+('m-n', 8, 4),
+('m-n', 9, 5),
+('m-n', 10, 6),
+('m-n', 11, 7),
+('m-n', 1, 8),
+('mc-n', 4, 1),
+('mc-n', 12, 2),
+('mc-n', 13, 3),
+('mc-n', 14, 4),
+('mc-n', 15, 5),
+('mc-n', 1, 6),
+('s-a', '5', 1),
+('s-a', '3', 2),
+('s-a', 6, 3)
 ;
 
 /*select * from rota as r, rota_cidades as rc where r.id_rota = rc.id_rota; */
