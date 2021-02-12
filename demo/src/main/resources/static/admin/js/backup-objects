@@ -11,3 +11,29 @@
 //     telefone: '2874289364289',
 //     email: 'cabel1971@ht.com'
 // }]
+globalResouces.main = [{
+    origem: 'Natal',
+    destino: 'Assu',
+    dia: '12/12/21',
+    horaSaida: '13:00',
+    rota: 'idRota',
+    motorista: 'nome_motorista',
+    onibus: '123dfgh'
+}, {
+    origem: 'Natal',
+    destino: 'Mossoro',
+    dia: '12/12/21',
+    horaSaida: '07:00',
+    rota: 'idRota',
+    motorista: 'nome_motorista',
+    onibus: '123dfgh'
+}]
+globalResouces.main = [{
+    placa: '345tyu',
+    assentos: '49',
+    tipo: 'luxo'
+}, {
+    placa: '098sdf',
+    assentos: '25',
+    tipo: 'micro'
+}]

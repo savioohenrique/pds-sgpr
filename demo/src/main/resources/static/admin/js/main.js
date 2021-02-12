@@ -10,7 +10,7 @@ function loadLoginPage(){
 
 async function createTableUsers(){   
     page = 1;
-    globalResouces.main = await getPassageiros();
+    globalResouces.main = await getResources("http://localhost:8080/passageiro");
     let headers = Object.keys(globalResouces.main[0]);
 
     //load table usuarios
@@ -23,18 +23,9 @@ async function createTableUsers(){
     showSearchAndAdd();
     hideWarnig();
 }
-
-function createTableBus(){
+async function createTableBus(){
     page = 2;
-    globalResouces.main = [{
-        placa: '345tyu',
-        assentos: '49',
-        tipo: 'luxo'
-    }, {
-        placa: '098sdf',
-        assentos: '25',
-        tipo: 'micro'
-    }]
+    // globalResouces.main = await getResources("http://localhost:8080/viagens");
     let headers = Object.keys(globalResouces.main[0]);
 
     //load table onibus
@@ -48,25 +39,9 @@ function createTableBus(){
     hideWarnig();
 }
 
-function createTableViagem(){
+async function createTableViagem(){
     page = 4;
-    globalResouces.main = [{
-        origem: 'Natal',
-        destino: 'Assu',
-        dia: '12/12/21',
-        horaSaida: '13:00',
-        rota: 'idRota',
-        motorista: 'nome_motorista',
-        onibus: '123dfgh'
-    }, {
-        origem: 'Natal',
-        destino: 'Mossoro',
-        dia: '12/12/21',
-        horaSaida: '07:00',
-        rota: 'idRota',
-        motorista: 'nome_motorista',
-        onibus: '123dfgh'
-    }]
+    globalResouces.main = await getResources("http://localhost:8080/viagens");
     let headers = Object.keys(globalResouces.main[0]);
 
     //load table onibus

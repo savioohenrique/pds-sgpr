@@ -1,8 +1,8 @@
-async function getPassageiros(){
+async function getResources(urlToRecources){
     try {
-        let response = await fetch("http://localhost:8080/passageiro");
-        let listOfPassageiros = await response.json();
-        return listOfPassageiros;
+        let response = await fetch(urlToRecources);
+        let listOfResources = await response.json();
+        return listOfResources;
     } catch (error) {
         console.log(error);
     }
