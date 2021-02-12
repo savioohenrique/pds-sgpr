@@ -74,4 +74,21 @@ insert into rota_cidades values('a-n', 2, 1),
 ('s-a', 6, 3)
 ;
 
-/*select * from rota as r, rota_cidades as rc where r.id_rota = rc.id_rota; */
+insert into viagem values(1, '2021-02-15', 'confirmada', '13:00', 'a-n', '29306192100', 'HZV8911'),
+(2, '2021-02-15', 'em espera', '15:00', 'm-n', '67727154970', 'GON9192'),
+(3, '2021-02-14', 'cancelado', '06:00', 'mc-n', '91937516482', 'JCP5031');
+
+select * from viagem;
+
+
+
+select c.nome as Origem, c1.nome as Destino, v.data_viagem, v.hora_saida, m.nome as motorista, o.num_placa as onibus
+from viagem as v, motorista as m, onibus as o, rota as r, cidades as c, cidades as c1
+where 
+v.rota = r.id_rota and 
+v.motorista = m.cpf and
+v.onibus = o.num_placa and
+r.origem = c.id_cidade and
+r.destino = c1.id_cidade;
+
+select * from viagens;
