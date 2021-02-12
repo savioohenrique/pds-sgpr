@@ -7,3 +7,20 @@ async function getResources(urlToRecources){
         console.log(error);
     }
 }
+
+async function postResource(urlToPost, resourceToPost){
+    try {
+        let response = await fetch(urlToPost, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(resourceToPost)
+        });
+        // let msg = await response.json();
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+}

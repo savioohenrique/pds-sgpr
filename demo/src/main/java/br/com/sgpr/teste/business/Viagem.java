@@ -1,33 +1,40 @@
-package br.com.sgpr.teste.data;
+package br.com.sgpr.teste.business;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 
 @Entity
 @Table(name="viagem")
-public class ViagemDAO {
+public class Viagem {
     private String data;
     private String hora_saida;
     private String rota;
     private String motorista;
     private String onibus;
-
-    public ViagemDAO(){}
+    private String status;
+    
+    public Viagem(){}
 
     @Id
+    // @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="data_viagem")
     public String getData(){
         return data;
     }
 
+    @Column(name="data_viagem")
     public void setData(String novaData){
         data = novaData;
     }
 
+    @Column(name="hora_saida")
     public String getHoraSaida(){
         return hora_saida;
     }
 
+    @Column(name="hora_saida")
     public void setHoraSaida(String novaHoraSaida){
         hora_saida = novaHoraSaida;
     }
@@ -55,4 +62,15 @@ public class ViagemDAO {
     public void setOnibus(String novaOnibus){
         onibus = novaOnibus;
     }
+
+    @Column(name="status_saida")
+    public String getStatus(){
+        return status;
+    }
+
+    @Column(name="status_saida")
+    public void setStatus(String novoStatus){
+        status = novoStatus;
+    }
 }
+

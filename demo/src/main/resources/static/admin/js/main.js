@@ -42,6 +42,25 @@ async function createTableBus(){
 async function createTableViagem(){
     page = 4;
     globalResouces.main = await getResources("http://localhost:8080/viagens");
+    // globalResouces.main = [{
+    //     origem: 'Natal',
+    //     destino: 'Assu',
+    //     dia: '12/12/21',
+    //     horaSaida: '13:00',
+    //     rota: 'idRota',
+    //     motorista: 'nome_motorista',
+    //     onibus: '123dfgh',
+    //     status: 'confirmado'
+    // }, {
+    //     origem: 'Natal',
+    //     destino: 'Mossoro',
+    //     dia: '12/12/21',
+    //     horaSaida: '07:00',
+    //     rota: 'idRota',
+    //     motorista: 'nome_motorista',
+    //     onibus: '123dfgh',
+    //     status: 'em espera'
+    // }]
     let headers = Object.keys(globalResouces.main[0]);
 
     //load table onibus
@@ -204,4 +223,26 @@ function showWarnig(){
 
 function hideWarnig(){
     document.getElementById('warnig1').style.display = 'none';
+}
+
+async function addResource(event){
+    // buildJSO(event.target.parentNode.id);
+    await postResource('http://localhost:8080/viagem', buildJSO(event.target.parentNode.id));
+}
+
+function buildJSO(formId){
+    let form = document.getElementById(formId);
+    let obj = {};
+
+    for(let e of form.children){
+        if(e.nodeName == 'INPUT'){
+            if(e.value == ''){
+                obj[e.placeholder] = null;
+            }else{
+                obj[e.placeholder] = e.value;
+            }
+        }
+    }
+
+    return obj;
 }

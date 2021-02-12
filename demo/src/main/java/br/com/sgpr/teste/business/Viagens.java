@@ -15,6 +15,7 @@ public class Viagens {
     private String motorista;
     private String onibus;
     private String rota;
+    private String status;
 
     public Viagens(){
 
@@ -81,4 +82,13 @@ public class Viagens {
         rota = novaRota;
     }
 
-}
+    @Column(name="estado")
+    public String getStatus(){
+        return status;
+    }
+
+    @Column(name="estado")
+    public void setStatus(String novoStatus){
+        status = novoStatus;
+    }
+}   

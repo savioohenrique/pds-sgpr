@@ -5,13 +5,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import br.com.sgpr.teste.business.Passageiro;
 import br.com.sgpr.teste.data.ViagensRepository;
 import br.com.sgpr.teste.business.Viagens;
 
 @RestController
 @RequestMapping(path="viagens")
-public class ViagemViewController {
+public class ViagensController {
 	@Autowired
 	private ViagensRepository viagensRepository;
 	

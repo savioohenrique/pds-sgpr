@@ -5,7 +5,6 @@ var selectForm = 0;
 function createFormUpdateDelete(){
     selectForm = 1;
     clearForm();
-    console.log('forms ' + "formUp" + page);
     document.getElementById('mainForm').className = 'forms ' + "formUp" + page;
 
     if(page !== 31){
@@ -70,8 +69,10 @@ function createINnputForms(namesForInput){
 
 function createBtnsAddForm(){
     let classBtnAdd = 'formsButton confirBtn ' + 'heightBtnInputAdd' + page;
+    let btn = createButton('Adicionar', classBtnAdd);
+    btn.addEventListener('click', addResource);
 
-    createButton('Adicionar', classBtnAdd);
+    document.getElementById('mainForm').appendChild(btn);
     createCancelButton();
 }
 
@@ -85,15 +86,15 @@ function createBtnsUpdateForm(){
 }
 
 function createButton(name, classForTheButton){
-    let btnUpdate = document.createElement('BUTTON');
+    let btn = document.createElement('BUTTON');
 
-    btnUpdate.innerText = name;
+    btn.innerText = name;
 
-    btnUpdate.type = 'button';
+    btn.type = 'button';
 
-    btnUpdate.className = classForTheButton;
+    btn.className = classForTheButton;
 
-    document.getElementById('mainForm').appendChild(btnUpdate);
+    return btn;
 }
 
 function createCancelButton(){

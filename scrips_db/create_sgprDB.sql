@@ -74,7 +74,7 @@ create table rota_cidades(
 );
 
 create table viagem(
-	id_viagem int,
+	id_viagem int auto_increment,
     data_viagem date,
     status_saida varchar(45),
     hora_saida varchar(5),
@@ -121,7 +121,7 @@ create table passagem(
 );
 
 create view viagens as
-select c.nome as Origem, c1.nome as Destino, v.data_viagem, v.hora_saida, m.nome as motorista, o.num_placa as onibus, r.id_rota as rota
+select c.nome as Origem, c1.nome as Destino, v.data_viagem, v.hora_saida, m.nome as motorista, o.num_placa as onibus, r.id_rota as rota, v.status_saida as estado 
 from viagem as v, motorista as m, onibus as o, rota as r, cidades as c, cidades as c1
 where 
 v.rota = r.id_rota and 
@@ -130,4 +130,4 @@ v.onibus = o.num_placa and
 r.origem = c.id_cidade and
 r.destino = c1.id_cidade;
 
-drop view viagens;
+-- drop view viagens;
