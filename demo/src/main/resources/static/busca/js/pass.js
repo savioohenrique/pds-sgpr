@@ -1,3 +1,4 @@
+var viagens = [];
 let empColors = ['emp1', 'emp2', 'emp3', 'emp4', 'emp5'];
 
 function createNewRow(){
@@ -16,7 +17,7 @@ function createPassElement(passInfo){
     empContainer.className = 'empName';
     empContainer.classList.add(empColors[Math.floor(Math.random() * empColors.length)]);
     let spanEmpName = document.createElement('SPAN');
-    spanEmpName.innerText = passInfo.empName;
+    spanEmpName.innerText = passInfo.empresa;
     empContainer.appendChild(spanEmpName);
 
     container.appendChild(empContainer);
@@ -39,7 +40,8 @@ function createPassElement(passInfo){
     let spanHoraSaida = document.createElement('SPAN');
     spanHoraSaida.innerText = 'Saida as ' + passInfo.horaSaida;
     let spanAssentos = document.createElement('SPAN');
-    spanAssentos.innerText = 'Assentos Disponives: ' + passInfo.assentos;
+    // spanAssentos.innerText = 'Assentos Disponives: ' + passInfo.assentos;
+    spanAssentos.innerText = 'Assentos Disponives: ' + passInfo.id;
 
     col1.appendChild(spanDest);
     col1.appendChild(spanHoraSaida);
@@ -73,20 +75,20 @@ function createPassElement(passInfo){
     return container;
 }
 
-function buildResponseOfSearch(){
-    let response = getResponse();
+async function buildResponseOfSearch(){
+    // let response = getResponse();
     let lastIndex = 0;
     let row = {};
 
-    let qtyOfRows = response.length % 3 == 0 ? response.length / 3 : Math.floor((response.length / 3)) + 1;
+    let qtyOfRows = viagens.length % 3 == 0 ? viagens.length / 3 : Math.floor((viagens.length / 3)) + 1;
     for(let i = 0; i < qtyOfRows; i++){
         row = createNewRow();
         
         for(let j = 0; j < 3; j++){
-            if(lastIndex >= response.length){
+            if(lastIndex >= viagens.length){
                 break;
             }else{
-                row.appendChild(createPassElement(response[lastIndex]));
+                row.appendChild(createPassElement(viagens[lastIndex]));
                 lastIndex++;
             }
         }
@@ -94,8 +96,8 @@ function buildResponseOfSearch(){
         document.getElementById('bkTrips').appendChild(row);
     }
 
-    if(response.length % 3 !== 0){
-        for(let i = response.length; i < (response.length + 2); i++){
+    if(viagens.length % 3 !== 0){
+        for(let i = viagens.length; i < (viagens.length + 2); i++){
             if(i % 3 == 0) break;
             row.appendChild(createFakePassContainer());
         }
@@ -110,42 +112,55 @@ function createFakePassContainer(){
     return container;
 }
 
-function getResponse(){
-    return  [{
-        empName: 'emp1',
-        destino: 'qualquer',
-        horaSaida: '00:00',
-        assentos: '50',
-        preco: '20,00'
-    }, {
-        empName: 'emp2',
-        destino: 'qualquer',
-        horaSaida: '00:00',
-        assentos: '50',
-        preco: '20,00'
-    },{
-        empName: 'emp3',
-        destino: 'qualquer',
-        horaSaida: '00:00',
-        assentos: '50',
-        preco: '20,00'
-    },{
-        empName: 'emp4',
-        destino: 'qualquer',
-        horaSaida: '00:00',
-        assentos: '50',
-        preco: '20,00'
-    },{
-        empName: 'emp5',
-        destino: 'qualquer',
-        horaSaida: '00:00',
-        assentos: '50',
-        preco: '20,00'
-    },{
-        empName: 'emp5',
-        destino: 'qualquer',
-        horaSaida: '00:00',
-        assentos: '50',
-        preco: '20,00'
-    }];
-}
+// testes
+
+// async function getResponse(){
+//     // data: "2021-02-15"
+//     // destino: "Natal"
+//     // empresa: "Sertão"
+//     // horaSaida: "13:00"
+//     // id: 1
+//     // motorista: "Isabella Rayssa Carvalho"
+//     // onibus: "HZV8911"
+//     // origem: "Assu"
+//     // preco: 150
+//     // rota: "a-n"
+//     // status: "confirmada"
+//     return  [{
+//         empresa: 'emp1',
+//         destino: 'qualquer',
+//         horaSaida: '00:00',
+//         assentos: '50',
+//         preco: '20,00'
+//     }, {
+//         empresa: 'emp2',
+//         destino: 'qualquer',
+//         horaSaida: '00:00',
+//         assentos: '50',
+//         preco: '20,00'
+//     },{
+//         empresa: 'emp3',
+//         destino: 'qualquer',
+//         horaSaida: '00:00',
+//         assentos: '50',
+//         preco: '20,00'
+//     },{
+//         empresa: 'emp4',
+//         destino: 'qualquer',
+//         horaSaida: '00:00',
+//         assentos: '50',
+//         preco: '20,00'
+//     },{
+//         empresa: 'emp5',
+//         destino: 'qualquer',
+//         horaSaida: '00:00',
+//         assentos: '50',
+//         preco: '20,00'
+//     },{
+//         empresa: 'emp5',
+//         destino: 'qualquer',
+//         horaSaida: '00:00',
+//         assentos: '50',
+//         preco: '20,00'
+//     }];
+// }

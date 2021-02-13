@@ -191,10 +191,10 @@ header button:hover{
     overflow: hidden;
 }
 
-.passContainer:hover{
-    /* transform: scale(1.1); */
-    /* background-color: #dfdfce; */
-}
+/* .passContainer:hover{
+    transform: scale(1.1);
+    background-color: #dfdfce;
+} */
 
 .empName{
     /* background-color: rebeccapurple; */
@@ -290,4 +290,16 @@ header button:hover{
 .emp5{
     background-color: #FF6B35;
     color: #f7f7f2
+}
+
+.divWarginViagem{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divWarginViagem span{
+    font-size: 300%;
 }

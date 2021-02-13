@@ -31,7 +31,7 @@ function createFormUpdateDelete(){
         
         if(page == 4){
             let atr = Object.keys(globalResouces.main[0]);
-            createINnputForms(atr.slice(2, atr.length));    
+            createINnputForms(atr.slice(3, atr.length));    
         }else{
             createINnputForms(Object.keys(globalResouces.main[0]));
         }
@@ -80,8 +80,8 @@ function createBtnsUpdateForm(){
     let classBtnUp = 'formsButton confirBtn ' + 'heightBtnInputUp' + page;
     let classBtnDel = 'formsButton deleteBtn ' + 'heightBtnInputUp' + page;
 
-    createButton('Atualizar', classBtnUp);
-    createButton('Deletar', classBtnDel);
+    document.getElementById('mainForm').appendChild(createButton('Atualizar', classBtnUp));
+    document.getElementById('mainForm').appendChild(createButton('Deletar', classBtnDel));
     createCancelButton();
 }
 

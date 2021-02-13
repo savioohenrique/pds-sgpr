@@ -5,14 +5,14 @@ function createTableHead(headersNames){
     for(let i = 0; i < headersNames.length;i++){
         let th = document.createElement('TH');
         th.innerText = headersNames[i];
-        th.width = cellWidth;
+        // th.width = cellWidth;
         tr.appendChild(th);
     }
 
     if(page == 3){
         let th = document.createElement('TH');
         th.innerText = 'Ver Rota';
-        th.width = cellWidth;
+        // th.width = cellWidth;
         tr.appendChild(th);
     }
 
@@ -28,7 +28,7 @@ function createRows(headersNames, resouces){
         for(let j = 0; j < headersNames.length; j++){
             let td = document.createElement('TD');
             td.innerText = resouces[i][headersNames[j]];
-            td.width = cellWidth;
+            // td.width = cellWidth;
             tr.appendChild(td);
         }
 
@@ -38,7 +38,7 @@ function createRows(headersNames, resouces){
             i.className = 'fas fa-eye';
             i.addEventListener('click', showTableRoute);
             td.appendChild(i);
-            td.width = cellWidth;
+            // td.width = cellWidth;
             tr.appendChild(td);
         }
 

@@ -9,6 +9,7 @@
     <script src="./js/main.js"></script>
     <script src="./js/animation.js"></script>
     <script src="./js/pass.js"></script>
+    <script src="./js/dbOperations.js"></script>
 </head>
 <body>
     <header>
@@ -22,21 +23,21 @@
             <div class="formContainer" id="searchMenu">
                 <h1>Pesquisar Viagens</h1>
                 <form action="POST" class="forms">
-                    <input type="text" class="formsInput" placeholder="De">
-                    <input type="text" class="formsInput" placeholder="Para">
-                    <input type="text" class="formsInput" placeholder="Dia">
-                    <input type="text" class="formsInput" placeholder="Hora de Saida">
-                    <input type="text" class="formsInput" placeholder="Preço">
+                    <input type="text" class="formsInput" placeholder="De" id="origem">
+                    <input type="text" class="formsInput" placeholder="Para" id="destino">
+                    <input type="text" class="formsInput" placeholder="Dia" id="data" disabled>
+                    <input type="text" class="formsInput" placeholder="Hora de Saida" id="hora" disabled>
+                    <input type="text" class="formsInput" placeholder="Preço" id="preco" disabled>
                 </form>
                 <div class="divBtnSearch">
-                    <button type="button" class="btnSearch" onclick="loadResponse()">Pesquisar</button>
+                    <button type="button" class="btnSearch" onclick="startBusca()">Pesquisar</button>
                 </div>
             </div>
         </div>
         <div class="backTrips" id="bkTrips">
             <div class="rowSearchResponse">
 
-                <div class="passContainer">
+                <!-- <div class="passContainer">
                     <div class="empName">
                         <span>Emp1</span>
                     </div>
@@ -91,7 +92,7 @@
                         <span>R$ 35,00</span>
                         <button type="button" class="btnPass">Comprar</button>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>

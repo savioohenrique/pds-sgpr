@@ -158,7 +158,7 @@ i:hover{
 }
 
 .tableMainContent{
-    width: 60%;
+    width: 80%;
     border-radius: 2px;
     box-shadow: 1px 1px 3px black;
 }
@@ -256,18 +256,18 @@ tr:hover{
 /* viagem forms */
 
 .formUp4{
-    height: 70%;
+    height: 90%;
 }
 .heightBtnInputUp4{
-    height: 8%;
+    height: 6%;
 }
 
 .formAdd4{
-    height: 77%;
+    height: 90%;
 }
 
 .heightBtnInputAdd4{
-    height: 9%;
+    height: 7%;
 }
 
 /* rota forms */

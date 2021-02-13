@@ -10,10 +10,12 @@ import javax.persistence.Id;
 public class Viagem {
     private String data;
     private String hora_saida;
+    private float preco;
     private String rota;
     private String motorista;
     private String onibus;
     private String status;
+    private String empresa;
     
     public Viagem(){}
 
@@ -37,6 +39,14 @@ public class Viagem {
     @Column(name="hora_saida")
     public void setHoraSaida(String novaHoraSaida){
         hora_saida = novaHoraSaida;
+    }
+
+    public float getPreco(){
+        return preco;
+    }
+
+    public void setPreco(float novoPreco){
+        preco = novoPreco;
     }
 
     public String getRota(){
@@ -71,6 +81,14 @@ public class Viagem {
     @Column(name="status_saida")
     public void setStatus(String novoStatus){
         status = novoStatus;
+    }
+
+    public String getEmpresa(){
+        return empresa;
+    }
+
+    public void setEmpresa(String novaEmpresa){
+        empresa = novaEmpresa;
     }
 }
 

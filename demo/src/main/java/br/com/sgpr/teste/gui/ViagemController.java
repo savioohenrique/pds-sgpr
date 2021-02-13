@@ -23,7 +23,7 @@ public class ViagemController {
     
     @PostMapping()
     public String postViagem(@RequestBody Viagem novaViagem){
-        System.out.println(novaViagem.getRota());
+        System.out.println("Salvando nova viagem...");
         viagemRepository.save(novaViagem);
         return "Saved";
     }

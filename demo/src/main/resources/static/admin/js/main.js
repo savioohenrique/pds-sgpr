@@ -189,7 +189,7 @@ function showAddForm(){
             break;
         case 4:
             let atr = Object.keys(globalResouces.main[0]);
-            createAddForm(atr.slice(2, atr.length), 'Viagem');
+            createAddForm(atr.slice(3, atr.length), 'Viagem');
             break;
         case 5:
             createAddForm(Object.keys(globalResouces.main[0]), 'Motorista');

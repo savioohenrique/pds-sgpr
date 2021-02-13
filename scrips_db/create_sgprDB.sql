@@ -34,6 +34,12 @@ create table cidades(
     primary key(id_cidade)
 );
 
+create table empresa(
+	id_empresa int auto_increment,
+    nome varchar(45),
+    
+    primary key(id_empresa)
+);
 /*As tabelas a partir daqui fazem referencia as que estão acima.*/ 
 
 create table rota(
@@ -78,11 +84,13 @@ create table viagem(
     data_viagem date,
     status_saida varchar(45),
     hora_saida varchar(5),
+    preco decimal(5,2),
     rota varchar(10),
     motorista varchar(11),
     onibus varchar(7),
+    empresa int,
     
-    primary key(id_viagem, data_viagem),
+    primary key(id_viagem),
     
     foreign key(rota)
 		references rota(id_rota)
@@ -96,6 +104,11 @@ create table viagem(
     
     foreign key(onibus)
 		references onibus(num_placa)
+	on update cascade
+    on delete cascade,
+    
+    foreign key(empresa)
+		references empresa(id_empresa)
 	on update cascade
     on delete cascade
 );
@@ -114,20 +127,21 @@ create table passagem(
 	on update cascade
     on delete cascade,
     
-    foreign key(viagem, data_validade)
-		references viagem(id_viagem, data_viagem)
+    foreign key(viagem)
+		references viagem(id_viagem)
 	on update cascade
     on delete cascade
 );
 
 create view viagens as
-select c.nome as Origem, c1.nome as Destino, v.data_viagem, v.hora_saida, m.nome as motorista, o.num_placa as onibus, r.id_rota as rota, v.status_saida as estado 
-from viagem as v, motorista as m, onibus as o, rota as r, cidades as c, cidades as c1
+select v.id_viagem as id, c.nome as Origem, c1.nome as Destino, v.data_viagem, v.hora_saida, v.preco, m.nome as motorista, o.num_placa as onibus, r.id_rota as rota, v.status_saida as estado, e.nome as empresa 
+from viagem as v, motorista as m, onibus as o, rota as r, cidades as c, cidades as c1, empresa as e
 where 
 v.rota = r.id_rota and 
 v.motorista = m.cpf and
 v.onibus = o.num_placa and
 r.origem = c.id_cidade and
-r.destino = c1.id_cidade;
+r.destino = c1.id_cidade and
+v.empresa = e.id_empresa;
 
 -- drop view viagens;

@@ -1,8 +1,3 @@
-function loadResponse(){
-    activeAnimation2();
-    buildResponseOfSearch();
-}
-
 function activeAnimation(){
     document.getElementById('searchMenu').children[0].style.display = 'none';
     document.getElementById('searchMenu').style.backgroundColor = 'transparent';

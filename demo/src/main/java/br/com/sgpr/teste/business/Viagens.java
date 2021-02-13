@@ -8,17 +8,29 @@ import javax.persistence.Column;
 @Entity
 @Table(name="viagens")
 public class Viagens {
+    private int id;
     private String origem;
     private String destino;
     private String data;
     private String hora_saida;
+    private float preco;
     private String motorista;
     private String onibus;
     private String rota;
     private String status;
+    private String empresa;
 
     public Viagens(){
 
+    }
+
+    @Id
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int novoId){
+        id = novoId;
     }
 
     public String getOrigem(){
@@ -37,7 +49,6 @@ public class Viagens {
         destino = novoDestino;
     }
 
-    @Id
     @Column(name="data_viagem")
     public String getData(){
         return data;
@@ -56,6 +67,14 @@ public class Viagens {
     @Column(name="hora_saida")
     public void setHoraSaida(String novaHoraSaida){
         hora_saida = novaHoraSaida;
+    }
+
+    public float getPreco(){
+        return preco;
+    }
+
+    public void setPreco(float novoPreco){
+        preco = novoPreco;
     }
 
     public String getMotorista(){
@@ -90,5 +109,13 @@ public class Viagens {
     @Column(name="estado")
     public void setStatus(String novoStatus){
         status = novoStatus;
+    }
+
+    public String getEmpresa(){
+        return empresa;
+    }
+
+    public void setEmpresa(String novaEmpresa){
+        empresa = novaEmpresa;
     }
 }   
