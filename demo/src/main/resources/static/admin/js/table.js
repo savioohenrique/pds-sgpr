@@ -63,11 +63,11 @@ function clearTable(){
 
 // route manager
 
-function showTableRoute(event){
+async function showTableRoute(event){
     page = 31;
-    globalResouces.dependence = ['cid1', 'cid2','cid3', 'cid4', 'cid5'];
     let rowToShow = event.target.parentNode.parentNode;
     let tableRotas = document.getElementById('tableMainContent').children;
+    globalResouces.dependence = await getResources(`http://localhost:8080/rotacidades?idRota=${rowToShow.children[3].innerText}`);
 
     for(let i = 1; i < tableRotas.length; i++){
         if(tableRotas[i] !== rowToShow){
@@ -102,7 +102,7 @@ function hideTableRoute(event){
     createAddForm(Object.keys(globalResouces.main[0]), 'rotas');
 }
 
-function createRouteTable(rotas){
+function createRouteTable(citys){
     let table = document.createElement('TABLE');
     table.className = 'tableMainContent';
     table.id = 'tableRota';
@@ -114,11 +114,20 @@ function createRouteTable(rotas){
 
     table.appendChild(row);
 
-    for(let i = 0; i < rotas.length; i++){
+    citys.sort((c1, c2) => {
+        if(c1.numSeq < c2.numSeq){
+            return -1
+        }else if(c1.numSeq > c2.numSeq){
+            return 1;
+        }else{
+            return 0;
+        }
+    })
+    for(let i = 0; i < citys.length; i++){
         let tr = document.createElement('TR');
 
         let td = document.createElement('TD');
-        td.innerText = rotas[i];
+        td.innerText = citys[i].nomeCidade;
         tr.appendChild(td);
 
         tr.addEventListener('dblclick', loadUpdateDeleteForm);

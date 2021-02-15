@@ -128,7 +128,7 @@ function createUpdateCitytoRoute(cityName){
 
     createHeadForm('Atualizar Rota');
     createINnputForms([cityName]);
-    createButton('Deletar', classBtnDel);
+    document.getElementById('mainForm').appendChild(createButton('Deletar', classBtnDel));
     createCancelButton();
 }
 

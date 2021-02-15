@@ -11,11 +11,12 @@ async function startBusca(){
     }else{
         document.getElementById('bkTrips').innerHTML = "";
 
-        if(des == ''){
-            viagens = await getViagens(makeUrlWithOrg(org));
-        }else{
-            viagens = await getViagens(makeUrlWithOrgDes(org, des));
-        }
+        // if(des == ''){
+        //     viagens = await getViagens(makeUrlWithOrg(org));
+        // }else{
+        //     viagens = await getViagens(makeUrlWithOrgDes(org, des));
+        // }
+        viagens = await getViagens(`http://localhost:8080/viagens/busca?origem=${org}&destino=${des}`);
 
         activeAnimation2();
         if(viagens.length == 0){
@@ -31,7 +32,7 @@ function makeUrlWithOrgDes(origem, destino){
 }
 
 function makeUrlWithOrg(origem){
-    return `http://localhost:8080/viagens/busca1?origem=${origem}`;
+    return `http://localhost:8080/viagens/busca?origem=${origem}`;
 }
 
 function loadWaringNotFoundViagens(){

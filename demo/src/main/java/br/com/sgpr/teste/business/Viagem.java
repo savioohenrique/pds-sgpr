@@ -16,8 +16,6 @@ public class Viagem {
     private String onibus;
     private String status;
     private String empresa;
-    
-    public Viagem(){}
 
     @Id
     // @GeneratedValue(strategy=GenerationType.AUTO)

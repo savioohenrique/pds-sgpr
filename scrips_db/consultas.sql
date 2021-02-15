@@ -18,3 +18,11 @@ v.onibus = o.num_placa and
 r.origem = c.id_cidade and
 r.destino = c1.id_cidade and
 v.empresa = e.id_empresa;
+
+select * from rotas;
+
+select * from rota_cidades;
+
+select * from cidades;
+
+select rc.id_rota, c.nome as nome_cidade, rc.num_seq from rota_cidades as rc, cidades as c where rc.id_rota = 'a-n' and rc.id_cidade = c.id_cidade;

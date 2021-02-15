@@ -22,14 +22,19 @@ public class ViagensController {
 	}
 
 	@GetMapping(path="busca")
-	public Iterable<Viagens> pesquisarViagens(@RequestParam String origem, @RequestParam String destino){
-		System.out.println("Começando a pesquisa pelas viagens com origem em " + origem + " e destino a " + destino + "...");
-		return viagensRepository.findAllViagens(origem, destino);
+	public Iterable<Viagens> pesquisarViagens(@RequestParam String origem, @RequestParam(required = false) String destino){
+		if(destino == ""){
+			System.out.println("Começando a pesquisa pelas viagens com origem em " + origem + "...");
+			return viagensRepository.findAllViagens(origem);
+		}else{
+			System.out.println("Começando a pesquisa pelas viagens com origem em " + origem + " e destino a " + destino + "...");
+			return viagensRepository.findAllViagens(origem, destino);
+		}
 	}
 
-	@GetMapping(path="busca1")
-	public Iterable<Viagens> pesquisarViagens(@RequestParam String origem){
-		System.out.println("Começando a pesquisa pelas viagens com origem em " + origem + "...");
-		return viagensRepository.findAllViagens(origem);
-	}
+	// @GetMapping(path="busca1")
+	// public Iterable<Viagens> pesquisarViagens(@RequestParam String origem){
+	// 	System.out.println("Começando a pesquisa pelas viagens com origem em " + origem + "...");
+	// 	return viagensRepository.findAllViagens(origem);
+	// }
 }

@@ -3,11 +3,12 @@ package br.com.sgpr.teste.business;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
+// import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 
 @Entity
 @Table(name="viagens")
-public class Viagens {
+public class Viagens{
     private int id;
     private String origem;
     private String destino;
@@ -19,10 +20,6 @@ public class Viagens {
     private String rota;
     private String status;
     private String empresa;
-
-    public Viagens(){
-
-    }
 
     @Id
     public int getId(){
@@ -101,6 +98,7 @@ public class Viagens {
         rota = novaRota;
     }
 
+    
     @Column(name="estado")
     public String getStatus(){
         return status;

@@ -42,25 +42,6 @@ async function createTableBus(){
 async function createTableViagem(){
     page = 4;
     globalResouces.main = await getResources("http://localhost:8080/viagens");
-    // globalResouces.main = [{
-    //     origem: 'Natal',
-    //     destino: 'Assu',
-    //     dia: '12/12/21',
-    //     horaSaida: '13:00',
-    //     rota: 'idRota',
-    //     motorista: 'nome_motorista',
-    //     onibus: '123dfgh',
-    //     status: 'confirmado'
-    // }, {
-    //     origem: 'Natal',
-    //     destino: 'Mossoro',
-    //     dia: '12/12/21',
-    //     horaSaida: '07:00',
-    //     rota: 'idRota',
-    //     motorista: 'nome_motorista',
-    //     onibus: '123dfgh',
-    //     status: 'em espera'
-    // }]
     let headers = Object.keys(globalResouces.main[0]);
 
     //load table onibus
@@ -102,24 +83,9 @@ function createTableMotorista(){
     hideWarnig();
 }
 
-function createTableRota(){
+async function createTableRota(){
     page = 3;
-    globalResouces.main = [{
-        id_rota: 'emp-123',
-        nome_rota: 'Natal-Macaiba',
-    }, {
-        id_rota: 'emp-432',
-        nome_rota: 'Natal-SaoGonsalo'
-    }, {
-        id_rota: 'emp-545',
-        nome_rota: 'Mossoro-Caico'
-    }, {
-        id_rota: 'emp-987',
-        nome_rota: 'Macal-Apodi'
-    }, {
-        id_rota: 'emp-026',
-        nome_rota: 'Inteiro-Sitio'
-    }]
+    globalResouces.main = await getResources("http://localhost:8080/rotas");
     let headers = Object.keys(globalResouces.main[0]);
 
     //load table usuarios

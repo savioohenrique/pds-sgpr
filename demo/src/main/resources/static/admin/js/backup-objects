@@ -37,3 +37,19 @@ globalResouces.main = [{
     assentos: '25',
     tipo: 'micro'
 }]
+[{
+        id_rota: 'emp-123',
+        nome_rota: 'Natal-Macaiba',
+    }, {
+        id_rota: 'emp-432',
+        nome_rota: 'Natal-SaoGonsalo'
+    }, {
+        id_rota: 'emp-545',
+        nome_rota: 'Mossoro-Caico'
+    }, {
+        id_rota: 'emp-987',
+        nome_rota: 'Macal-Apodi'
+    }, {
+        id_rota: 'emp-026',
+        nome_rota: 'Inteiro-Sitio'
+    }]
