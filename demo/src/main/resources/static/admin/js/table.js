@@ -1,6 +1,6 @@
-function createTableHead(headersNames){
+function createTableHead(table, headersNames){
     let tr = document.createElement('TR');
-    let cellWidth = page == 3 ? getCellNewWidth(headersNames.length + 1) : getCellNewWidth(headersNames.length);
+    // let cellWidth = page == 3 ? getCellNewWidth(headersNames.length + 1) : getCellNewWidth(headersNames.length);
 
     for(let i = 0; i < headersNames.length;i++){
         let th = document.createElement('TH');
@@ -9,18 +9,18 @@ function createTableHead(headersNames){
         tr.appendChild(th);
     }
 
-    if(page == 3){
+    if(page == 3 || page == 4){
         let th = document.createElement('TH');
-        th.innerText = 'Ver Rota';
+        th.innerText = page == 3 ? 'Ver Rota' : 'Passagens';
         // th.width = cellWidth;
         tr.appendChild(th);
     }
 
-    document.getElementById('tableMainContent').appendChild(tr);
+    table.appendChild(tr);
 }
 
-function createRows(headersNames, resouces){
-    let cellWidth = page == 3 ? getCellNewWidth(headersNames.length + 1) : getCellNewWidth(headersNames.length);
+function createRows(table, headersNames, resouces){
+    // let cellWidth = page == 3 ? getCellNewWidth(headersNames.length + 1) : getCellNewWidth(headersNames.length);
 
     for(let i = 0; i < resouces.length; i++){
         let tr = document.createElement('TR');
@@ -32,18 +32,19 @@ function createRows(headersNames, resouces){
             tr.appendChild(td);
         }
 
-        if(page == 3){
+        if(page == 3 || page == 4){
             let td = document.createElement('TD');
             let i = document.createElement('I');
             i.className = 'fas fa-eye';
-            i.addEventListener('click', showTableRoute);
+            // i.addEventListener('click', showTableRoute);
+            i.addEventListener('click', showSubTable);
             td.appendChild(i);
             // td.width = cellWidth;
             tr.appendChild(td);
         }
 
         tr.addEventListener('dblclick', loadUpdateDeleteForm);
-        document.getElementById('tableMainContent').appendChild(tr);
+        table.appendChild(tr);
     }
 }
 
@@ -53,6 +54,22 @@ function getCellNewWidth(amountOfHeaders){
     return final_width;
 }
 
+function createMainTable(headers, resouces){
+    let table = document.getElementById('tableMainContent');
+    createTableHead(table, headers);
+    createRows(table, headers, resouces);
+}
+
+function createSubTable(headers, resouces){
+    if(page != 31){
+        let table = getSubTable();
+        createTableHead(table, headers);
+        createRows(table, headers, resouces);
+    }else{
+        createRouteTable(resouces);
+    }
+}
+
 function clearTable(){
     document.getElementById('tableMainContent').innerHTML = '';
     if(document.getElementById('main').children[2].id == 'tableRota'){
@@ -60,30 +77,30 @@ function clearTable(){
     }
 }
 
-
-// route manager
-
-async function showTableRoute(event){
-    page = 31;
+async function showSubTable(event){
+    updatePage();
     let rowToShow = event.target.parentNode.parentNode;
     let tableRotas = document.getElementById('tableMainContent').children;
-    globalResouces.dependence = await getResources(`http://localhost:8080/rotacidades?idRota=${rowToShow.children[3].innerText}`);
+    globalResouces.dependence = await getRightResources(rowToShow);
 
-    for(let i = 1; i < tableRotas.length; i++){
-        if(tableRotas[i] !== rowToShow){
-            tableRotas[i].style.display = 'none';
+    if(globalResouces.dependence.length > 0){
+        for(let i = 1; i < tableRotas.length; i++){
+            if(tableRotas[i] !== rowToShow){
+                tableRotas[i].style.display = 'none';
+            }
         }
+    
+        event.target.className = 'fas fa-eye-slash'
+        event.target.removeEventListener('click', showSubTable);
+        event.target.addEventListener('click', hideSubTable);
+        createSubTable(Object.keys(globalResouces.dependence[0]), globalResouces.dependence);
+        createAddForm(["id_cidade"], 'cidades da rota');
+    }else{
+        alert("Nehuma passagem foi encontrada para essa viagem!");
     }
-
-    event.target.className = 'fas fa-eye-slash'
-    event.target.removeEventListener('click', showTableRoute);
-    event.target.addEventListener('click', hideTableRoute);
-    createRouteTable(globalResouces.dependence);
-    createAddForm(["id_cidade"], 'cidades da rota');
 }
 
-function hideTableRoute(event){
-    let rowToShow = event.target.parentNode.parentNode;
+function hideSubTable(event){
     let tableRotas = document.getElementById('tableMainContent').children;
 
     for(let i = 1; i < tableRotas.length; i++){
@@ -91,21 +108,57 @@ function hideTableRoute(event){
     }
 
     event.target.className = 'fas fa-eye'
-    event.target.removeEventListener('click', hideTableRoute);
-    event.target.addEventListener('click', showTableRoute);
+    event.target.removeEventListener('click', hideSubTable);
+    event.target.addEventListener('click', showSubTable);
 
     document.getElementById('main').removeChild(document.getElementById('main').children[2]);
 
     //Atualiza a pagina para a pagina principal de rotas
     globalResouces.dependence = null;
-    page = 3;
+    updatePage();
     createAddForm(Object.keys(globalResouces.main[0]), 'rotas');
 }
 
-function createRouteTable(citys){
+function updatePage(){
+    switch(page){
+        case 3:
+            page = 31;
+            break;
+        case 31: //Esta mostrando a subTable de rotas
+            page = 3;
+            break;
+        case 4:
+            page = 41;
+            break;
+        case 41: //Esta mostrando a subTable de viagens
+            page = 4;
+            break;
+        default:
+            page = 0;
+    }
+}
+
+async function getRightResources(rowToShow){
+    switch(page){
+        case 31: //Esta mostrando a subTable de rotas
+            return await getResources(`http://localhost:8080/rotacidades?idRota=${rowToShow.children[3].innerText}`);
+        case 41: //Esta mostrando a subTable de viagens
+            return await getResources(`http://localhost:8080/passagens?viagemId=${rowToShow.children[0].innerText}`);
+        default:
+            return [];
+    }
+}
+
+function getSubTable(){
     let table = document.createElement('TABLE');
     table.className = 'tableMainContent';
-    table.id = 'tableRota';
+    table.id = 'subTable';
+    document.getElementById('main').insertBefore(table, document.getElementById('main').children[2]);
+    return table;
+}
+
+function createRouteTable(citys){
+    let table = getSubTable();
 
     let row = document.createElement('TR');
     let th = document.createElement('TH');
@@ -133,6 +186,4 @@ function createRouteTable(citys){
         tr.addEventListener('dblclick', loadUpdateDeleteForm);
         table.appendChild(tr);
     }
-
-    document.getElementById('main').insertBefore(table, document.getElementById('main').children[2]);
-}
+};

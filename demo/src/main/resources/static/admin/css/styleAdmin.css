@@ -375,7 +375,7 @@ tr:hover{
     background-color: #af0b08;
 }
 
-#tableRota{
+#tableRota, #subTable{
     margin-top: 1%;
     border-spacing: 0;
 }

@@ -15,8 +15,7 @@ async function createTableUsers(){
 
     //load table usuarios
     clearTable();
-    createTableHead(headers);
-    createRows(headers, globalResouces.main);
+    createMainTable(headers, globalResouces.main);
     //load form update/delete de usuarios
     createFormUpdateDelete();
     //load serach input and add button
@@ -42,13 +41,13 @@ async function createTableBus(){
 async function createTableViagem(){
     page = 4;
     globalResouces.main = await getResources("http://localhost:8080/viagens");
+    // globalResouces.main = getFakeViagens();
     let headers = Object.keys(globalResouces.main[0]);
 
-    //load table onibus
+    //load table viagem
     clearTable();
-    createTableHead(headers);
-    createRows(headers, globalResouces.main);
-    //load form update/delete de onibus
+    createMainTable(headers, globalResouces.main);
+    //load form update/delete de viagem
     createFormUpdateDelete();
     //load serach input and add button
     showSearchAndAdd();
@@ -57,26 +56,14 @@ async function createTableViagem(){
 
 function createTableMotorista(){
     page = 5;
-    globalResouces.main = [{
-        cpf: '36182361627',
-        nome: 'Jose Da Silva',
-        endereco: 'Rua depis da outra',
-        telefone: '112123131',
-        email: 'jsasdasdasdasd@gm.com'
-    }, {
-        cpf: '8237429473',
-        nome: 'Doido do Pastel',
-        endereco: 'Na esquina da rua',
-        telefone: '487892374243',
-        email: 'dsasdasdasda@ht.com'
-    }]
+    globalResouces.main = getFakeMotoristas();
     let headers = Object.keys(globalResouces.main[0]);
 
-    //load table usuarios
+    //load table motorista
     clearTable();
     createTableHead(headers);
     createRows(headers, globalResouces.main);
-    //load form update/delete de usuarios
+    //load form update/delete de motorista
     createFormUpdateDelete();
     //load serach input and add button
     showSearchAndAdd();
@@ -88,11 +75,10 @@ async function createTableRota(){
     globalResouces.main = await getResources("http://localhost:8080/rotas");
     let headers = Object.keys(globalResouces.main[0]);
 
-    //load table usuarios
+    //load table rota
     clearTable();
-    createTableHead(headers);
-    createRows(headers, globalResouces.main);
-    //load form update/delete de usuarios
+    createMainTable(headers, globalResouces.main);
+    //load form update/delete de rota
     createFormUpdateDelete();
     //load serach input and add button
     showSearchAndAdd();
@@ -101,19 +87,7 @@ async function createTableRota(){
 
 function createTableCid(){
     page = 6;
-    globalResouces.main = [{
-        id_cidade: '1',
-        nome: 'Natal',
-    }, {
-        id_cidade: '2',
-        nome: 'Assu',
-    }, {
-        id_cidade: '3',
-        nome: 'Mossoro',
-    }, {
-        id_cidade: '4',
-        nome: 'Macau',
-    }]
+    globalResouces.main = getFakeCidades();
     let headers = Object.keys(globalResouces.main[0]);
 
     //load table usuarios

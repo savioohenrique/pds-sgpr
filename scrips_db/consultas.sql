@@ -26,3 +26,7 @@ select * from rota_cidades;
 select * from cidades;
 
 select rc.id_rota, c.nome as nome_cidade, rc.num_seq from rota_cidades as rc, cidades as c where rc.id_rota = 'a-n' and rc.id_cidade = c.id_cidade;
+
+select * from passagem;
+
+select cod_validacao, data_validade, num_assento, cpf, nome from passagem as ps, passageiro as p where ps.cpf_dono = p.cpf;
