@@ -16,8 +16,6 @@ async function createTableUsers(){
     //load table usuarios
     clearTable();
     createMainTable(headers, globalResouces.main);
-    //load form update/delete de usuarios
-    createFormUpdateDelete();
     //load serach input and add button
     showSearchAndAdd();
     hideWarnig();
@@ -31,8 +29,6 @@ async function createTableBus(){
     clearTable();
     createTableHead(headers);
     createRows(headers, globalResouces.main);
-    //load form update/delete de onibus
-    createFormUpdateDelete();
     //load serach input and add button
     showSearchAndAdd();
     hideWarnig();
@@ -47,8 +43,6 @@ async function createTableViagem(){
     //load table viagem
     clearTable();
     createMainTable(headers, globalResouces.main);
-    //load form update/delete de viagem
-    createFormUpdateDelete();
     //load serach input and add button
     showSearchAndAdd();
     hideWarnig();
@@ -63,8 +57,6 @@ function createTableMotorista(){
     clearTable();
     createTableHead(headers);
     createRows(headers, globalResouces.main);
-    //load form update/delete de motorista
-    createFormUpdateDelete();
     //load serach input and add button
     showSearchAndAdd();
     hideWarnig();
@@ -78,8 +70,6 @@ async function createTableRota(){
     //load table rota
     clearTable();
     createMainTable(headers, globalResouces.main);
-    //load form update/delete de rota
-    createFormUpdateDelete();
     //load serach input and add button
     showSearchAndAdd();
     hideWarnig();
@@ -94,8 +84,6 @@ function createTableCid(){
     clearTable();
     createTableHead(headers);
     createRows(headers, globalResouces.main);
-    //load form update/delete de usuarios
-    createFormUpdateDelete();
     //load serach input and add button
     showSearchAndAdd();
     hideWarnig();
@@ -128,8 +116,12 @@ function showAddForm(){
             createAddCitytoRoute();
             break;
         case 4:
-            let atr = Object.keys(globalResouces.main[0]);
-            createAddForm(atr.slice(3, atr.length), 'Viagem');
+            let atrVig = Object.keys(globalResouces.main[0]);
+            createAddForm(atrVig.slice(3, atrVig.length), 'Viagem');
+            break;
+        case 41:
+            let atrPass = Object.keys(globalResouces.dependence[0]);
+            createAddForm(atrPass.slice(0, atrPass.length-1), 'Passagem');
             break;
         case 5:
             createAddForm(Object.keys(globalResouces.main[0]), 'Motorista');
@@ -142,7 +134,7 @@ function showAddForm(){
 }
 
 function loadUpdateDeleteForm(event){
-    createFormUpdateDelete(event.target.innerText);
+    createFormUpdateDelete(event.target.parentNode, event.target.innerText);
     showForm();
 }
 

@@ -72,7 +72,7 @@ function createSubTable(headers, resouces){
 
 function clearTable(){
     document.getElementById('tableMainContent').innerHTML = '';
-    if(document.getElementById('main').children[2].id == 'tableRota'){
+    if(document.getElementById('main').children[2].id == 'subTable'){
         document.getElementById('main').removeChild(document.getElementById('main').children[2]);
     }
 }
@@ -94,7 +94,6 @@ async function showSubTable(event){
         event.target.removeEventListener('click', showSubTable);
         event.target.addEventListener('click', hideSubTable);
         createSubTable(Object.keys(globalResouces.dependence[0]), globalResouces.dependence);
-        createAddForm(["id_cidade"], 'cidades da rota');
     }else{
         alert("Nehuma passagem foi encontrada para essa viagem!");
     }
@@ -113,10 +112,9 @@ function hideSubTable(event){
 
     document.getElementById('main').removeChild(document.getElementById('main').children[2]);
 
-    //Atualiza a pagina para a pagina principal de rotas
+    //Atualiza a pagina para a pagina principal
     globalResouces.dependence = null;
     updatePage();
-    createAddForm(Object.keys(globalResouces.main[0]), 'rotas');
 }
 
 function updatePage(){

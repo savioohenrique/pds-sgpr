@@ -2,7 +2,7 @@
 //1 = update form
 var selectForm = 0;
 
-function createFormUpdateDelete(){
+function createFormUpdateDelete(row, cityName){
     selectForm = 1;
     clearForm();
     document.getElementById('mainForm').className = 'forms ' + "formUp" + page;
@@ -21,6 +21,9 @@ function createFormUpdateDelete(){
             case 4:
                 createHeadForm('Atualizar Viagem');
                 break;
+            case 41:
+                createHeadForm('Atualizar Passagem');
+                break;
             case 5:
                 createHeadForm('Atualizar Motorista');
                 break;
@@ -30,14 +33,21 @@ function createFormUpdateDelete(){
         }
         
         if(page == 4){
-            let atr = Object.keys(globalResouces.main[0]);
-            createINnputForms(atr.slice(3, atr.length));    
+            let atrVig = Object.keys(globalResouces.main[0]);
+            createINnputForms(atrVig.slice(3, atrVig.length));
+            putValueIntoInput(3, Object.keys(globalResouces.main[0]).length, row);
+        }else if(page == 41){
+            let atrPass = Object.keys(globalResouces.dependence[0]);
+            createINnputForms(atrPass.slice(0, atrPass.length - 1));
+            putValueIntoInput(0, Object.keys(globalResouces.dependence[0]).length - 1, row);
         }else{
             createINnputForms(Object.keys(globalResouces.main[0]));
+            putValueIntoInput(0, Object.keys(globalResouces.main[0]).length, row);
         }
         createBtnsUpdateForm();
     }else{
-        createUpdateCitytoRoute(arguments[0]);
+        // createUpdateCitytoRoute(arguments[0]);
+        createUpdateCitytoRoute(cityName);
     }
 }
 
@@ -119,7 +129,7 @@ function clearForm(){
 function createAddCitytoRoute(){
     document.getElementById('mainForm').className = 'forms ' + "formAdd" + page;
     createHeadForm("Adicionar Cidade a Rota");
-    createINnputForms(["id_cidade, id_cidade, ..., id_cidade", "nome_cidade, nome_cidade, ..., nome_cidade"]);
+    createINnputForms(["(id_cidade,num_seq), (id_cidade,num_seq), ..., (id_cidade,num_seq)", "(nome_cidade, num_seq), (nome_cidade, num_seq), ..., (nome_cidade, num_seq)"]);
     createBtnsAddForm();
 }
 
@@ -134,4 +144,23 @@ function createUpdateCitytoRoute(cityName){
 
 function calHeightOfForm(numOfEleInForm){
     return (70 * numOfEleInForm) / 9;
+}
+
+function putValueIntoInput(starIndex, endIndex, row){
+    let rowTds = row.children;
+    let form = document.getElementById('mainForm').children;
+    let inputs = [];
+
+    for(let e of form){
+        if(e.nodeName == "INPUT"){
+            inputs.push(e);
+        }
+    }
+
+    let i = 0;
+    while(starIndex < endIndex){
+        inputs[i].value = rowTds[starIndex].innerText;
+        i++;
+        starIndex++;
+    }
 }
