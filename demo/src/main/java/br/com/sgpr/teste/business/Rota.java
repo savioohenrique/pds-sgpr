@@ -8,20 +8,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "rotas")
 public class Rota {
-    private String id_rota;
+    private String idRota;
     private String nome;
-    private String origem;
-    private String destino;
 
     @Id
     @Column(name = "id_rota")
     public String getIdRota(){
-        return id_rota;
+        return idRota;
     }
 
     @Column(name = "id_rota")
     public void setIdRota(String novoId){
-        id_rota = novoId;
+        idRota = novoId;
     }
 
     @Column(name = "nome_rota")
@@ -32,21 +30,5 @@ public class Rota {
     @Column(name = "nome_rota")
     public void setNome(String novoNome){
         nome = novoNome;
-    }
-
-    public String getOrigem() {
-        return origem;
-    }
-
-    public void setOrigem(String origem) {
-        this.origem = origem;
-    }
-
-    public String getDestino() {
-        return destino;
-    }
-
-    public void setDestino(String destino) {
-        this.destino = destino;
     }
 }

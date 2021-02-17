@@ -2,6 +2,8 @@ package br.com.sgpr.teste.gui;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,5 +20,12 @@ public class RotaController {
     public Iterable<Rota> getRotas(){
         System.out.println("Pegando todas as rotas");
         return rotaRepository.findAll();
+    }
+
+    @PostMapping()
+    public String postRota(@RequestBody Rota rota){
+        System.out.println("Salvando nova rota...");
+        rotaRepository.save(rota);
+        return new String("salvo com sucesso!");
     }
 }

@@ -139,7 +139,7 @@ function updatePage(){
 async function getRightResources(rowToShow){
     switch(page){
         case 31: //Esta mostrando a subTable de rotas
-            return await getResources(`http://localhost:8080/rotacidades?idRota=${rowToShow.children[3].innerText}`);
+            return await getResources(`http://localhost:8080/rotacidades?idRota=${rowToShow.children[0].innerText}`);
         case 41: //Esta mostrando a subTable de viagens
             return await getResources(`http://localhost:8080/passagens?viagemId=${rowToShow.children[0].innerText}`);
         default:
@@ -181,7 +181,7 @@ function createRouteTable(citys){
         td.innerText = citys[i].nomeCidade;
         tr.appendChild(td);
 
-        tr.addEventListener('dblclick', loadUpdateDeleteForm);
+        // tr.addEventListener('dblclick', loadUpdateDeleteForm);
         table.appendChild(tr);
     }
 };

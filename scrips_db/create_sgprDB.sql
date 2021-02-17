@@ -147,6 +147,8 @@ v.empresa = e.id_empresa;
 -- drop view viagens;
 
 create view rotas as
-select rota.id_rota, rota.nome_rota, c1.nome as origem, c2.nome as destino
+select rota.id_rota, rota.nome_rota
 from rota, cidades as c1, cidades as c2 
 where rota.origem = c1.id_cidade and rota.destino = c2.id_cidade;
+
+drop view rotas;

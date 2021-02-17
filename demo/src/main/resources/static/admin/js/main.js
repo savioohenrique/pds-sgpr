@@ -65,6 +65,7 @@ function createTableMotorista(){
 async function createTableRota(){
     page = 3;
     globalResouces.main = await getResources("http://localhost:8080/rotas");
+    // globalResouces.main = getFakeRota();
     let headers = Object.keys(globalResouces.main[0]);
 
     //load table rota
@@ -99,40 +100,6 @@ function hideForm(event){
     event.target.parentNode.parentNode.style.display = 'none';
 }
 
-function showAddForm(){
-    selectForm = 0;
-    clearForm();
-    switch(page){
-        case 1:
-            createAddForm(Object.keys(globalResouces.main[0]), 'Usuario');
-            break;
-        case 2:
-            createAddForm(Object.keys(globalResouces.main[0]), 'Onibus');
-            break;
-        case 3:
-            createAddForm(Object.keys(globalResouces.main[0]), 'Rota');
-            break;
-        case 31:
-            createAddCitytoRoute();
-            break;
-        case 4:
-            let atrVig = Object.keys(globalResouces.main[0]);
-            createAddForm(atrVig.slice(3, atrVig.length), 'Viagem');
-            break;
-        case 41:
-            let atrPass = Object.keys(globalResouces.dependence[0]);
-            createAddForm(atrPass.slice(0, atrPass.length-1), 'Passagem');
-            break;
-        case 5:
-            createAddForm(Object.keys(globalResouces.main[0]), 'Motorista');
-            break;
-        case 6:
-            createAddForm(Object.keys(globalResouces.main[0]), 'Cidade');
-            break;
-    }
-    showForm();
-}
-
 function loadUpdateDeleteForm(event){
     createFormUpdateDelete(event.target.parentNode, event.target.innerText);
     showForm();
@@ -158,8 +125,15 @@ function hideWarnig(){
 }
 
 async function addResource(event){
-    // buildJSO(event.target.parentNode.id);
-    await postResource('http://localhost:8080/viagem', buildJSO(event.target.parentNode.id));
+    console.log(buildJSO(event.target.parentNode.id));
+    switch(page){
+        case 3:
+            await postResource('http://localhost:8080/rotas', buildJSO(event.target.parentNode.id));
+            break;
+        case 4:
+            await postResource('http://localhost:8080/viagem', buildJSO(event.target.parentNode.id));
+            break;
+    }
 }
 
 function buildJSO(formId){

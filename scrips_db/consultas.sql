@@ -19,6 +19,8 @@ r.origem = c.id_cidade and
 r.destino = c1.id_cidade and
 v.empresa = e.id_empresa;
 
+select * from rota;
+
 select * from rotas;
 
 select * from rota_cidades;
