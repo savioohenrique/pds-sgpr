@@ -8,7 +8,7 @@ Com o Mysql instalado execute os scrpits que se encontram na pasta scripts_db na
 3. Execute os dois primeiros comandos do script consultas  
 
 # Rodando o projeto
-Para rodar o projeto abra o terminal na pasta **demo** e digite um dos seguintes comondas:
+Para rodar o projeto abra o terminal na pasta **demo** e digite um dos seguintes comandas:
 
 No Linux:  
 `./mvnw spring-boot:run`
