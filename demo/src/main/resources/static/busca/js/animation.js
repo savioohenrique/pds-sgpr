@@ -38,4 +38,5 @@ function loadHomepageSearch(){
     document.getElementById('searchMenu').children[1].className = 'forms';
     document.getElementById('bkForms').style.height = '100%';
     document.getElementById('bkImg').style.display = 'inline';
+    document.getElementById('bkTrips').innerHTML = "";
 }

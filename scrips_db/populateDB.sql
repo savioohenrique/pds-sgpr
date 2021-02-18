@@ -84,7 +84,8 @@ insert into rota_cidades values('a-n', 2, 1),
 insert into viagem (data_viagem, status_saida, hora_saida, rota, motorista, onibus, preco, empresa) values
 ('2021-02-15', 'confirmada', '13:00', 'a-n', '29306192100', 'HZV8911', 150.00, 1),
 ('2021-02-15', 'em espera', '15:00', 'm-n', '67727154970', 'GON9192', '75.50', 2),
-('2021-02-14', 'cancelado', '06:00', 'mc-n', '91937516482', 'JCP5031', 35.00, 3);
+('2021-02-14', 'cancelado', '06:00', 'mc-n', '91937516482', 'JCP5031', 35.00, 3),
+('2021-02-15', 'confirmada', '13:00', 's-a', '92782758080', 'IAA7858', 15.00, 3);
 
 insert into passagem values('1', 1, '2020-12-31', 5, '40811470784'),
 ('2', 2, '2020-12-31', 5, '40811470784'),

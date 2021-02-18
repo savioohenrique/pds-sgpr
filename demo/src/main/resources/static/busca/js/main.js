@@ -5,7 +5,7 @@ function loadLoginPage(){
 async function startBusca(){
     let org = document.getElementById('origem').value;
     let des = document.getElementById('destino').value;
-
+    console.log("testeeeeeeeeeeeeeeeeeeeeee");
     if(org == ''){
         alert('Escolha uma origem(local de partida)!');
     }else{
