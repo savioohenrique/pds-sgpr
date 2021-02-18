@@ -1,5 +1,5 @@
 function loadLoginPage(){
-    window.location.href = 'http://localhost:8080/login/login.html';
+    window.location.href = 'http://localhost:8080/login/';
 }
 
 async function startBusca(){
