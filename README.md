@@ -13,5 +13,6 @@ Para rodar o projeto abra o terminal na pasta **demo** e digite um dos seguintes
 No Linux:  
 `./mvnw spring-boot:run`
 
-No Windows(Não testado!):  
-`mvnw spring-boot:run`
+No Windows:
+1. Descomente a linha 3 do arquivo application.properties localizado na pasta demo/src/main/resources e comente a linha 2.
+2. Execute `mvnw spring-boot:run`
