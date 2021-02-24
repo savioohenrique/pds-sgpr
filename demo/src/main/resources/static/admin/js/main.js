@@ -128,7 +128,8 @@ async function addResource(event){
     console.log(buildJSO(event.target.parentNode.id));
     switch(page){
         case 3:
-            await postResource('http://localhost:8080/rotas', buildJSO(event.target.parentNode.id));
+            //Todo fazer o post para rotas e rotacidades
+            // await postResource('http://localhost:8080/rotas', buildJSO(event.target.parentNode.id));
             break;
         case 4:
             await postResource('http://localhost:8080/viagem', buildJSO(event.target.parentNode.id));
