@@ -79,7 +79,7 @@ Response:
 ### Cidades da Rota
 Resquest:
 
-`GET http://localhost:8080/rotacidades?idRota=id`
+`GET http://localhost:8080/rotas/rotacidades?idRota=id`
 
 | id = id da rota |
 
