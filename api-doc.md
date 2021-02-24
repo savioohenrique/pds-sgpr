@@ -7,12 +7,12 @@ Resquest:
 
 Response:  
 `
-[\ 
-  {\  
-  "cpf": "123456789012,\
-  "nome":"Fulano",\
-  "telefone":"(82) 3836-2691",\
-  "email":"fulano@zf.com"\
-  },\
-]\
+[\n
+  {\n 
+  "cpf": "123456789012,\n
+  "nome":"Fulano",\n
+  "telefone":"(82) 3836-2691",\n
+  "email":"fulano@zf.com"\n
+  },\n
+]\n
 `
