@@ -1,0 +1,23 @@
+GET http://localhost:8080/rota
+
+###
+
+DELETE http://localhost:8080/rota?rotaId=t-1
+
+###
+
+POST http://localhost:8080/rota
+Content-Type: application/json
+
+{"idRota": "t-3", "nome": "teste2", "nomeOrigem": "Mossoro", "nomeDestino": "Natal"}
+
+###
+
+POST http://localhost:8080/rota/cidades
+Content-Type: application/json
+
+[
+    {"idRota": "t-3", "nomeCidade": "Natal", "numSeq": "0"},
+    {"idRota": "t-3", "nomeCidade": "Assu", "numSeq": "1"},
+    {"idRota": "t-3", "nomeCidade": "Mossoro", "numSeq": "2"}
+]

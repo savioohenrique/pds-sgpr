@@ -63,7 +63,7 @@ async function createFormUpdateDelete(row){
     }
     
     if(page == 3 || page == 31){
-        globalResouces.dependence = await getResources(`http://localhost:8080/rotacidades?idRota=${row.children[0].innerText}`);
+        globalResouces.dependence = await getResources(`http://localhost:8080/rota/cidades?idRota=${row.children[0].innerText}`);
         globalResouces.dependence.sort((c1, c2) => {
             if(c1.numSeq < c2.numSeq){
                 return -1

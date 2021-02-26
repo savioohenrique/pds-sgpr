@@ -20,7 +20,7 @@ public class RotaCidades {
         this.numSeq = numSeq;
     };
 
-    @Id
+    @Id    
     @Column(name = "id_rota")
     public String getIdRota() {
         return idRota;
@@ -47,8 +47,8 @@ public class RotaCidades {
     }
 
     @Column(name = "num_seq")
-    public void setNumSeq(int num_seq) {
-        this.numSeq = num_seq;
+    public void setNumSeq(int numSeq) {
+        this.numSeq = numSeq;
     }
     
 }

@@ -129,7 +129,7 @@ async function addResource(event){
             console.log(rota);
             console.log(cidades);
             await postResource('http://localhost:8080/rota', rota);
-            // await postResource('http://localhost:8080/rota/cidades', cidades);
+            await postResource('http://localhost:8080/rota/cidades', cidades);
             break;
         case 4:
             await postResource('http://localhost:8080/viagem', buildJSO(event.target.parentNode.id));
