@@ -27,8 +27,7 @@ async function createTableBus(){
 
     //load table onibus
     clearTable();
-    createTableHead(headers);
-    createRows(headers, globalResouces.main);
+    createMainTable(headers, globalResouces.main);
     //load serach input and add button
     showSearchAndAdd();
     hideWarnig();
@@ -55,8 +54,7 @@ function createTableMotorista(){
 
     //load table motorista
     clearTable();
-    createTableHead(headers);
-    createRows(headers, globalResouces.main);
+    createMainTable(headers, globalResouces.main);
     //load serach input and add button
     showSearchAndAdd();
     hideWarnig();
@@ -64,7 +62,7 @@ function createTableMotorista(){
 
 async function createTableRota(){
     page = 3;
-    globalResouces.main = await getResources("http://localhost:8080/rotas");
+    globalResouces.main = await getResources("http://localhost:8080/rota");
     // globalResouces.main = getFakeRota();
     let headers = Object.keys(globalResouces.main[0]);
 
@@ -76,15 +74,15 @@ async function createTableRota(){
     hideWarnig();
 }
 
-function createTableCid(){
+async function createTableCid(){
     page = 6;
-    globalResouces.main = getFakeCidades();
+    // globalResouces.main = getFakeCidades();
+    globalResouces.main = await getResources("http://localhost:8080/cidades");
     let headers = Object.keys(globalResouces.main[0]);
 
-    //load table usuarios
+    //load table cidades   
     clearTable();
-    createTableHead(headers);
-    createRows(headers, globalResouces.main);
+    createMainTable(headers, globalResouces.main);
     //load serach input and add button
     showSearchAndAdd();
     hideWarnig();
@@ -125,11 +123,13 @@ function hideWarnig(){
 }
 
 async function addResource(event){
-    console.log(buildJSO(event.target.parentNode.id));
     switch(page){
         case 3:
-            //Todo fazer o post para rotas e rotacidades
-            // await postResource('http://localhost:8080/rotas', buildJSO(event.target.parentNode.id));
+            let {rota, cidades} = createRotaToPost(event.target.parentNode.id);
+            console.log(rota);
+            console.log(cidades);
+            await postResource('http://localhost:8080/rota', rota);
+            // await postResource('http://localhost:8080/rota/cidades', cidades);
             break;
         case 4:
             await postResource('http://localhost:8080/viagem', buildJSO(event.target.parentNode.id));
@@ -153,3 +153,21 @@ function buildJSO(formId){
 
     return obj;
 }
+
+function createRotaToPost(formId) {
+    let idRota  = document.getElementById(formId).children[1].value;
+    let nome    = document.getElementById(formId).children[2].value;
+    let cidades = document.getElementById(formId).children[3].value;
+    cidades = cidades.split(",");
+
+    return {
+        rota: {idRota: idRota, nome: nome, nomeOrigem: cidades[0].trim(), nomeDestino: cidades[cidades.length - 1].trim()},
+        cidades: cidades.map((c, index) => {
+            return {
+                idRota: idRota,
+                nomeCidade: c.trim(),
+                numSeq: index
+            }
+        })
+    }
+} 

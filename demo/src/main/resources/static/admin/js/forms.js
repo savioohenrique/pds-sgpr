@@ -27,7 +27,7 @@ function showAddForm(){
             createAddForm(Object.keys(globalResouces.main[0]), 'Motorista');
             break;
         case 6:
-            createAddForm(Object.keys(globalResouces.main[0]), 'Cidade');
+            createAddForm([Object.keys(globalResouces.main[0])[1]], 'Cidade');
             break;
     }
     showForm();
