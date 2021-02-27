@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.sgpr.teste.business.Rota;
-import br.com.sgpr.teste.business.VisãoRotas;
+import br.com.sgpr.teste.business.VisaoRotas;
 import br.com.sgpr.teste.business.RotaCidadesService;
 import br.com.sgpr.teste.business.RotaService;
 import br.com.sgpr.teste.business.VisaoRotaCidade;
@@ -28,7 +28,7 @@ public class RotaController {
     private RotaCidadesService rotaCidadesService;
 
     @GetMapping()
-    public Iterable<VisãoRotas> getRotas(){
+    public Iterable<VisaoRotas> getRotas(){
         return rotaServices.getRotas();
     }
 

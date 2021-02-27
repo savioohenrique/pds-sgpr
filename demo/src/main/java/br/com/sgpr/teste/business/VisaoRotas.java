@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "rotas")
-public class VisãoRotas {
+public class VisaoRotas {
     private String idRota;
     private String nome;
 

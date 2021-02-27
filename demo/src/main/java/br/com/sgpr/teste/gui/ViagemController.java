@@ -3,29 +3,41 @@ package br.com.sgpr.teste.gui;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import br.com.sgpr.teste.data.ViagemRepository;
 import br.com.sgpr.teste.business.Viagem;
+import br.com.sgpr.teste.business.ViagemService;
+import br.com.sgpr.teste.business.VisaoViagens;
 
 @RestController
 @RequestMapping(path="viagem")
 public class ViagemController {
 	@Autowired
-	private ViagemRepository viagemRepository;
-	
+	private ViagemService viagemService;
+    
 	@GetMapping()
-	public Iterable<Viagem> getViagens(){
-		return viagemRepository.findAll();
+	public Iterable<VisaoViagens> getViagens(){
+		return viagemService.getVisaoViagens();
     }
     
     @PostMapping()
     public String postViagem(@RequestBody Viagem novaViagem){
-        System.out.println("Salvando nova viagem...");
-        viagemRepository.save(novaViagem);
-        return "Saved";
+        return viagemService.saveViagem(novaViagem);
     }
+
+    @DeleteMapping(path = "/{viagemId}")
+    public String deleteViagem(@PathVariable int viagemId){
+        return viagemService.deleteViagem(viagemId);
+    }
+
+    @GetMapping(path="busca")
+	public Iterable<VisaoViagens> pesquisarViagens(@RequestParam String origem, @RequestParam(required = false) String destino){
+		return viagemService.pesquisarViagens(origem, destino);
+	}
 }
 

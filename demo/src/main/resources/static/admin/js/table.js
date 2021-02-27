@@ -139,7 +139,7 @@ function updatePage(){
 async function getRightResources(rowToShow){
     switch(page){
         case 31: //Esta mostrando a subTable de rotas
-            return await getResources(`http://localhost:8080/rota/cidades?idRota=${rowToShow.children[0].innerText}`);
+            return await getResources(`http://localhost:8080/rota/${rowToShow.children[0].innerText}/cidades`);
         case 41: //Esta mostrando a subTable de viagens
             return await getResources(`http://localhost:8080/passagens?viagemId=${rowToShow.children[0].innerText}`);
         default:

@@ -1,7 +1,8 @@
 var page = 0;
 var globalResouces = {
     main: [],
-    dependence: null
+    dependence: null,
+    id: null
 };
 
 function loadLoginPage(){
@@ -35,7 +36,7 @@ async function createTableBus(){
 
 async function createTableViagem(){
     page = 4;
-    globalResouces.main = await getResources("http://localhost:8080/viagens");
+    globalResouces.main = await getResources("http://localhost:8080/viagem");
     // globalResouces.main = getFakeViagens();
     let headers = Object.keys(globalResouces.main[0]);
 
@@ -126,13 +127,14 @@ async function addResource(event){
     switch(page){
         case 3:
             let {rota, cidades} = createRotaToPost(event.target.parentNode.id);
-            console.log(rota);
-            console.log(cidades);
             await postResource('http://localhost:8080/rota', rota);
             await postResource('http://localhost:8080/rota/cidades', cidades);
             break;
         case 4:
             await postResource('http://localhost:8080/viagem', buildJSO(event.target.parentNode.id));
+            break;
+        case 6:
+            await postResource('http://localhost:8080/cidades', buildJSO(event.target.parentNode.id));
             break;
     }
 }
@@ -171,3 +173,18 @@ function createRotaToPost(formId) {
         })
     }
 } 
+
+async function dltResource(){
+    console.log(globalResouces.id); 
+    switch(page){
+        case 3:
+            await deleteResource(`http://localhost:8080/rota/${globalResouces.id}`);
+            break;
+        case 4:
+            await deleteResource(`http://localhost:8080/viagem/${globalResouces.id}`);
+            break;
+        case 6:
+            await deleteResource(`http://localhost:8080/cidades/${globalResouces.id}`);
+            break;
+    }
+}

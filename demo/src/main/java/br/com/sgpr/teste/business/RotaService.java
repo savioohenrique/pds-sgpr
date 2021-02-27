@@ -16,7 +16,7 @@ public class RotaService {
     @Autowired
     private CidadeRepository cidadeRepository;
 
-    public Iterable<VisãoRotas> getRotas(){
+    public Iterable<VisaoRotas> getRotas(){
         System.out.println("Pegando todas as rotas");
         return visaoRotaRepository.findAll();
     }

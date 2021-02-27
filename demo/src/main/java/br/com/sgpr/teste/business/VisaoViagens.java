@@ -8,7 +8,7 @@ import javax.persistence.Column;
 
 @Entity
 @Table(name="viagens")
-public class Viagens{
+public class VisaoViagens{
     private int id;
     private String origem;
     private String destino;
