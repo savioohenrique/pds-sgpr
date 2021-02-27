@@ -17,4 +17,9 @@ public interface RotaCidadesRepository extends CrudRepository<RotaCidades, Strin
     @Transactional
     @Query(value = "insert into rota_cidades (id_rota, id_cidade, num_seq) values(:idRota, :idCidade, :numSeq)", nativeQuery = true)
     public void saveNovaCidade(@Param("idRota") String idRota, @Param("idCidade") int idCidade, @Param("numSeq") int numSeq);
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from rota_cidades where id_rota = :rotaId", nativeQuery = true)
+    public void deleteCidadesRotaById(@Param("rotaId") String rotaId);
 }
