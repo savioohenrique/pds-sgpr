@@ -7,20 +7,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "rota_cidades")
-public class RotaCidades {
+public class VisaoRotaCidade{
     private String idRota;
-    private int id_cidade;
+    private String nome;
     private int numSeq;
 
-    public RotaCidades() {};
-
-    public RotaCidades(String id, int idCidade, int numSeq) {
-        this.idRota = id;
-        this.id_cidade = idCidade;
-        this.numSeq = numSeq;
-    };
-
-    @Id
     @Column(name = "id_rota")
     public String getIdRota() {
         return idRota;
@@ -31,24 +22,25 @@ public class RotaCidades {
         this.idRota = id_rota;
     }
 
-    @Column(name = "id_cidade")
-    public int getIdCidade() {
-        return id_cidade;
+    @Column(name = "nome_cidade")
+    public String getNomeCidade() {
+        return nome;
     }
 
-    @Column(name = "id_cidade")
-    public void setIdCidade(int id_cidade) {
-        this.id_cidade = id_cidade;
+    @Column(name = "nome_cidade")
+    public void setNomeCidade(String NomeCidade) {
+        this.nome = NomeCidade;
     }
 
+    @Id
     @Column(name = "num_seq")
     public int getNumSeq() {
         return numSeq;
     }
 
     @Column(name = "num_seq")
-    public void setNumSeq(int numSeq) {
-        this.numSeq = numSeq;
+    public void setNumSeq(int num_seq) {
+        this.numSeq = num_seq;
     }
     
 }

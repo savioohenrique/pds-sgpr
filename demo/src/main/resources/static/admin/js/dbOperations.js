@@ -24,3 +24,15 @@ async function postResource(urlToPost, resourceToPost){
         console.log(error)
     }
 }
+
+async function deleteResource(urlToDelete){
+    try {
+        let response = await fetch(urlToDelete, {
+            method: "DELETE"
+        });
+        let resJson = await response.json();
+        console.log(resJson);
+    } catch (error) {
+        console.log(error)
+    }
+}

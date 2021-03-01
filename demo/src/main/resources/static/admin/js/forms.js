@@ -27,7 +27,7 @@ function showAddForm(){
             createAddForm(Object.keys(globalResouces.main[0]), 'Motorista');
             break;
         case 6:
-            createAddForm(Object.keys(globalResouces.main[0]), 'Cidade');
+            createAddForm([Object.keys(globalResouces.main[0])[1]], 'Cidade');
             break;
     }
     showForm();
@@ -63,7 +63,7 @@ async function createFormUpdateDelete(row){
     }
     
     if(page == 3 || page == 31){
-        globalResouces.dependence = await getResources(`http://localhost:8080/rotacidades?idRota=${row.children[0].innerText}`);
+        globalResouces.dependence = await getResources(`http://localhost:8080/rota/${row.children[0].innerText}/cidades`);
         globalResouces.dependence.sort((c1, c2) => {
             if(c1.numSeq < c2.numSeq){
                 return -1
@@ -136,9 +136,11 @@ function createBtnsAddForm(){
 function createBtnsUpdateForm(){
     let classBtnUp = 'formsButton confirBtn ' + 'heightBtnInputUp' + page;
     let classBtnDel = 'formsButton deleteBtn ' + 'heightBtnInputUp' + page;
+    let btnDelete = createButton('Deletar', classBtnDel);
+    btnDelete.addEventListener("click", dltResource);
 
     document.getElementById('mainForm').appendChild(createButton('Atualizar', classBtnUp));
-    document.getElementById('mainForm').appendChild(createButton('Deletar', classBtnDel));
+    document.getElementById('mainForm').appendChild(btnDelete);
     createCancelButton();
 }
 
@@ -211,4 +213,6 @@ function putValueIntoInput(starIndex, endIndex, row){
         i++;
         starIndex++;
     }
+
+    globalResouces.id = rowTds[0].innerText;
 }

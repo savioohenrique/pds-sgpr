@@ -1,0 +1,74 @@
+GET http://localhost:8080/viagem
+
+###
+
+POST http://localhost:8080/viagem
+Content-Type: application/json
+
+{
+    "data": "2021-02-15",
+    "preco": 150.0,
+    "rota": "a-n",
+    "motorista": "29306192100",
+    "onibus": "HZV8911",
+    "status": "confirmada",
+    "empresa": "1",
+    "horaSaida": "13:00"
+}
+
+###
+
+DELETE http://localhost:8080/viagem/5
+
+###
+
+GET http://localhost:8080/viagem/busca?origem=Assu&destino=Natal
+
+###
+GET http://localhost:8080/rota
+
+###
+GET http://localhost:8080/rota/t-5/cidades
+
+###
+
+DELETE http://localhost:8080/rota/t-51
+
+###
+
+POST http://localhost:8080/rota
+Content-Type: application/json
+
+{"idRota": "t-51", "nome": "teste2", "nomeOrigem": "Mossoro", "nomeDestino": "Natal"}
+
+###
+
+POST http://localhost:8080/rota/cidades
+Content-Type: application/json
+
+[
+    {"idRota": "t-5", "nomeCidade": "Natal", "numSeq": "0"},
+    {"idRota": "t-5", "nomeCidade": "Assu", "numSeq": "1"},
+    {"idRota": "t-5", "nomeCidade": "Mossoro", "numSeq": "2"}
+]
+
+###
+
+DELETE http://localhost:8080/rota/t-5/cidades
+
+###
+
+GET http://localhost:8080/cidades
+
+###
+
+POST http://localhost:8080/cidades
+Content-Type: application/json
+
+{
+    "nome": "cidade nome teste"
+}
+
+###
+
+DELETE http://localhost:8080/cidades/18

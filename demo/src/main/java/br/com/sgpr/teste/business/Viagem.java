@@ -2,12 +2,15 @@ package br.com.sgpr.teste.business;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
 
 @Entity
 @Table(name="viagem")
 public class Viagem {
+    private int id;
     private String data;
     private String hora_saida;
     private float preco;
@@ -18,7 +21,16 @@ public class Viagem {
     private String empresa;
 
     @Id
-    // @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_viagem")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     @Column(name="data_viagem")
     public String getData(){
         return data;

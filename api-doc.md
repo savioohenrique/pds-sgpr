@@ -18,7 +18,60 @@ Response:
 	...
 ]
 ``` 
+## Viagem
 
+Request:
+
+`GET http://localhost:8080/viagem`
+
+Response:
+
+```
+[
+  {
+    "id": 1,
+    "origem": "Assu",
+    "destino": "Natal",
+    "data": "2021-02-15",
+    "preco": 150.0,
+    "motorista": "Fulano Da Silva",
+    "onibus": "HZV8911",
+    "rota": "a-n",
+    "status": "confirmada",
+    "empresa": "Sertão",
+    "horaSaida": "13:00"
+  },
+  ...
+]
+```
+
+Request:
+
+`POST http://localhost:8080/viagem`
+
+Body:
+```
+{
+    "data": "2021-02-15",
+    "preco": 150.0,
+    "rota": "a-n",
+    "motorista": "29306192100",
+    "onibus": "HZV8911",
+    "status": "confirmada",
+    "empresa": "1",
+    "horaSaida": "13:00"
+}
+```
+
+Request:
+
+`DELETE http://localhost:8080/viagem/viagemId`
+
+| viagemId = id da viagem a ser deletada|
+
+Response:
+
+`Mensagem de sucesso ou erro`
 ## Passagens
 
 Request:
@@ -46,7 +99,7 @@ Response:
 
 Request:
 
-`GET http://localhost:8080/rotas`
+`GET http://localhost:8080/rota`
 
 Response:
 ```
@@ -61,7 +114,7 @@ Response:
 
 Request:
 
-`POST http://localhost:8080/rotas`
+`POST http://localhost:8080/rota`
 
 Body do request:
 
@@ -69,6 +122,8 @@ Body do request:
 {
   "idRota": "a-n", 
   "nome": "AssuNatal"
+  "nomeOrigem": "Assu", 
+  "nomeDestino": "Natal"
 }
 ```
 
@@ -76,12 +131,23 @@ Response:
 
 `"messagem de sucesso ou erro."`
 
+Request:
+
+`DELETE http://localhost:8080/rota/rotaId`
+
+| rotaId = id da rota a ser deletada |
+
+Response:
+
+`Mensagem de sucesso ou erro`
+
 ### Cidades da Rota
+
 Resquest:
 
-`GET http://localhost:8080/rotas/rotacidades?idRota=id`
+`GET http://localhost:8080/rota/rotaId/cidades`
 
-| id = id da rota |
+| rotaId = id da rota |
 
 Response:
 ```
@@ -89,10 +155,82 @@ Response:
 	{
 	  "id_rota":"a-n",
 	  "numSeq":7,
-	  "nomeCidade":
-	  "Natal"
+	  "nomeCidade":"Natal"
 	},
 	...
 ]
 ```
 
+Request:
+
+`POST http://localhost:8080/rota/cidades`
+
+Body:
+
+```
+[
+    {"idRota": "t-5", "nomeCidade": "Natal", "numSeq": "0"},
+    {"idRota": "t-5", "nomeCidade": "Assu", "numSeq": "1"},
+    {"idRota": "t-5", "nomeCidade": "Mossoro", "numSeq": "2"}
+]
+
+```
+
+Response:
+
+`Mensagem de sucesso ou erro`
+
+Request:
+
+`DELETE http://localhost:8080/rota/rotaId/cidades`
+
+| rotaId = id da rota ao qual as cidades fazem parte |
+
+Response:
+
+`Mensagem de sucesso ou erro`
+
+## Cidades
+
+Resquest:
+
+`GET http://localhost:8080/cidades`
+
+Response:
+```
+[
+  {
+    "id": 1,
+    "nome": "Natal"
+  },
+  {
+    "id": 2,
+    "nome": "Assu"
+  },
+  ...
+]
+```
+Request:
+
+`POST http://localhost:8080/cidades`
+
+Body:
+```
+{
+    "nome": "cidade nome teste"
+}
+```
+
+Response:
+
+`Mensagem de sucesso ou erro`
+
+Request:
+
+`DELETE http://localhost:8080/cidades/cidadeId`
+
+| cidadeId = id da cidade a ser deletada|
+
+Response:
+
+`Mensagem de sucesso ou erro`
