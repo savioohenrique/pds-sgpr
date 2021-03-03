@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import br.com.sgpr.teste.business.Viagem;
-import br.com.sgpr.teste.business.ViagemService;
-import br.com.sgpr.teste.business.VisaoViagens;
+import br.com.sgpr.teste.business.entity.Viagem;
+import br.com.sgpr.teste.business.service.ViagemService;
+import br.com.sgpr.teste.business.entity.VisaoViagens;
 
 @RestController
 @RequestMapping(path="viagem")

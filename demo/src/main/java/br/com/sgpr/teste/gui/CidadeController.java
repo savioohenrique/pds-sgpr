@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.sgpr.teste.business.Cidade;
-import br.com.sgpr.teste.business.CidadeService;
+import br.com.sgpr.teste.business.entity.Cidade;
+import br.com.sgpr.teste.business.service.CidadeService;
 
 @RestController
 @RequestMapping(path = "cidades")

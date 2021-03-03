@@ -1,4 +1,4 @@
-package br.com.sgpr.teste.business;
+package br.com.sgpr.teste.business.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

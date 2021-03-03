@@ -1,4 +1,4 @@
-package br.com.sgpr.teste.business;
+package br.com.sgpr.teste.business.service;
 
 import java.util.ArrayList;
 
@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import br.com.sgpr.teste.business.entity.Cidade;
+import br.com.sgpr.teste.business.entity.RotaCidades;
+import br.com.sgpr.teste.business.entity.VisaoRotaCidade;
 import br.com.sgpr.teste.data.CidadeRepository;
 import br.com.sgpr.teste.data.RotaCidadesRepository;
 import br.com.sgpr.teste.data.VisaoRotaCidadeRepository;

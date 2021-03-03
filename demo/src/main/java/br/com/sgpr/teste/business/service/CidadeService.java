@@ -1,8 +1,9 @@
-package br.com.sgpr.teste.business;
+package br.com.sgpr.teste.business.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.sgpr.teste.business.entity.Cidade;
 import br.com.sgpr.teste.data.CidadeRepository;
 
 @Service
