@@ -29,14 +29,14 @@ GET http://localhost:8080/rota
 
 ###
 
-DELETE http://localhost:8080/rota/t-5
+DELETE http://localhost:8080/rota/t-6
 
 ###
 
 POST http://localhost:8080/rota
 Content-Type: application/json
 
-{"idRota": "t-51", "nome": "teste2", "nomeOrigem": "Mossoro", "nomeDestino": "Natal"}
+{"idRota": "t-6", "nome": "teste2", "nomeOrigem": "Mossoro", "nomeDestino": "Natal"}
 
 ###
 GET http://localhost:8080/rota/a-n/cidades
