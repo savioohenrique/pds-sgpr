@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import br.com.sgpr.teste.business.entity.Viagem;
 import br.com.sgpr.teste.business.service.ViagemService;
 import br.com.sgpr.teste.business.entity.VisaoViagens;
+import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
 
 @RestController
 @RequestMapping(path="viagem")
@@ -27,7 +28,14 @@ public class ViagemController {
     
     @PostMapping()
     public String postViagem(@RequestBody Viagem novaViagem){
-        return viagemService.saveViagem(novaViagem);
+        try {
+            return viagemService.saveViagem(novaViagem);
+        } catch (BusinessExceptions e) {
+            for(String erro : e.getListOfMenssagens()){
+                System.out.println(erro);
+            }
+            return new String("Viagem invalida!");
+        }
     }
 
     @DeleteMapping(path = "/{viagemId}")

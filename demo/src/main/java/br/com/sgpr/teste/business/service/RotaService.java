@@ -1,5 +1,7 @@
 package br.com.sgpr.teste.business.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +36,10 @@ public class RotaService {
     public String deleteRota(String rotaId){
         rotaRepository.deleteById(rotaId);
         return new String("rota deletada!");
+    }
+
+    //Teste
+    public ArrayList<Rota> getRotaById(String rotaId){
+        return rotaRepository.getRotaById(rotaId);
     }
 }
