@@ -18,8 +18,16 @@ async function postResource(urlToPost, resourceToPost){
             },
             body: JSON.stringify(resourceToPost)
         });
-        // let msg = await response.json();
-        console.log(response);
+        let msg = await response.json();
+
+        //Teste
+        if(msg.status === "Error") {
+            let fullErros = "";
+            for(let s of msg.erros) {
+                fullErros += s + "\n";
+            }
+            alert(fullErros);
+        }
     } catch (error) {
         console.log(error)
     }

@@ -168,11 +168,14 @@ Request:
 Body:
 
 ```
-[
-    {"idRota": "t-5", "nomeCidade": "Natal", "numSeq": "0"},
-    {"idRota": "t-5", "nomeCidade": "Assu", "numSeq": "1"},
-    {"idRota": "t-5", "nomeCidade": "Mossoro", "numSeq": "2"}
-]
+{
+    "rotaId": "t-5",
+    "cidades": [ 
+        {"nome": "Natal", "numSeq": "0"},
+        {"nome": "Assu", "numSeq": "1"},
+        {"nome": "Mossoro", "numSeq": "2"}
+    ]
+}
 
 ```
 

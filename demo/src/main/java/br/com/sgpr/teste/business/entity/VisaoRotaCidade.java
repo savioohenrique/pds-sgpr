@@ -23,12 +23,12 @@ public class VisaoRotaCidade{
     }
 
     @Column(name = "nome_cidade")
-    public String getNomeCidade() {
+    public String getNome() {
         return nome;
     }
 
     @Column(name = "nome_cidade")
-    public void setNomeCidade(String NomeCidade) {
+    public void setNome(String NomeCidade) {
         this.nome = NomeCidade;
     }
 

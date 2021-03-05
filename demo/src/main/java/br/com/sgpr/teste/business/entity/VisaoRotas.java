@@ -10,6 +10,8 @@ import javax.persistence.Table;
 public class VisaoRotas {
     private String idRota;
     private String nome;
+    private String origem;
+    private String destino;
 
     @Id
     @Column(name = "id_rota")
@@ -30,5 +32,21 @@ public class VisaoRotas {
     @Column(name = "nome_rota")
     public void setNome(String novoNome){
         nome = novoNome;
+    }
+
+    public String getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
     }
 }

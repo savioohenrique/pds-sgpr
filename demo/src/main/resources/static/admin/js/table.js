@@ -178,7 +178,7 @@ function createRouteTable(citys){
         let tr = document.createElement('TR');
 
         let td = document.createElement('TD');
-        td.innerText = citys[i].nomeCidade;
+        td.innerText = citys[i].nome;
         tr.appendChild(td);
 
         // tr.addEventListener('dblclick', loadUpdateDeleteForm);

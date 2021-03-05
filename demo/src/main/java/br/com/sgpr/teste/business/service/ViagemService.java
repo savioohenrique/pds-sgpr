@@ -2,7 +2,6 @@ package br.com.sgpr.teste.business.service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.Month;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,17 +62,30 @@ public class ViagemService {
 
 		System.out.println("Validando nova viagem...");
 		if(viagemToValidade == null){
-			listOfInvalidFeild.add("Viagem não tem nada(null)");
+			listOfInvalidFeild.add("Viagem não fornecida");
 			throw new BusinessExceptions(listOfInvalidFeild);
 		}
 
-		if(viagemToValidade.getData() == null){
+		if(viagemToValidade.getData() == null || viagemToValidade.getData().isEmpty()){
 			listOfInvalidFeild.add("Data não fornecida!");
 		}else{
 			LocalDate dateToSave = LocalDate.parse(viagemToValidade.getData());
 			LocalDate today = LocalDate.now();
 			if(dateToSave.isBefore(today)){
 				listOfInvalidFeild.add("Data invalida, a data da viagem deve ser de hoje ou qualquer dia após.");
+			}else {
+				if(viagemToValidade.getHoraSaida() == null || viagemToValidade.getHoraSaida().isEmpty()){
+					listOfInvalidFeild.add("Hora de saida não fornecida");
+				}else{
+					if(dateToSave.isEqual(today)) {
+						LocalTime hourNow = LocalTime.now();
+						LocalTime horaSaida = LocalTime.parse(viagemToValidade.getHoraSaida());
+			
+						if((horaSaida.getHour() < hourNow.getHour()) || ( (horaSaida.getHour() == hourNow.getHour()) && (horaSaida.getMinute() <= hourNow.getMinute()))) {
+							listOfInvalidFeild.add("Hora de saida invalida");
+						}
+					}
+				}
 			}
 		}
 
@@ -81,7 +93,7 @@ public class ViagemService {
 			listOfInvalidFeild.add("Preço invalido!");
 		}
 
-		if(viagemToValidade.getRota() == null) {
+		if(viagemToValidade.getRota() == null || viagemToValidade.getRota().isEmpty()) {
 			listOfInvalidFeild.add("Rota não fornecida!");
 		}else {
 			ArrayList<Rota> rotas = rotaRepository.getRotaById(viagemToValidade.getRota());
@@ -91,36 +103,25 @@ public class ViagemService {
 			}
 		}
 
-		if(viagemToValidade.getMotorista() == null){
+		if(viagemToValidade.getMotorista() == null || viagemToValidade.getMotorista().isEmpty()){
 			listOfInvalidFeild.add("Motorista não fornecido");
 		}else{
 			//TODO
 			//Verificar se o cpf do motorista é valido
 		}
 
-		if(viagemToValidade.getOnibus() == null){
+		if(viagemToValidade.getOnibus() == null || viagemToValidade.getOnibus().isEmpty()){
 			listOfInvalidFeild.add("Onibus não fornecido");
 		}else{
 			//TODO
 			//Verificar se a placa do onibus é valida
 		}
 
-		if(viagemToValidade.getEmpresa() == null){
+		if(viagemToValidade.getEmpresa() == null || viagemToValidade.getEmpresa().isEmpty()){
 			listOfInvalidFeild.add("Empresa não fornecida");
 		}else{
 			//TODO
 			//Verificar se a empresa é valida
-		}
-
-		if(viagemToValidade.getHoraSaida() == null){
-			listOfInvalidFeild.add("Hora de saida não fornecida");
-		}else{
-			LocalTime hourNow = LocalTime.now();
-			LocalTime horaSaida = LocalTime.parse(viagemToValidade.getHoraSaida());
-
-			if((horaSaida.getHour() < hourNow.getHour()) || (horaSaida.getMinute() <= hourNow.getMinute())){
-				listOfInvalidFeild.add("Hora de saida invalida");
-			}
 		}
 
 		if(listOfInvalidFeild.size() > 0){
