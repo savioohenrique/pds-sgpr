@@ -164,13 +164,14 @@ function createRotaToPost(formId) {
 
     return {
         rota: {idRota: idRota, nome: nome, nomeOrigem: cidades[0].trim(), nomeDestino: cidades[cidades.length - 1].trim()},
-        cidades: cidades.map((c, index) => {
+        cidades: {
+            rotaId: idRota,
+            cidades: cidades.map((c, index) => {
             return {
-                idRota: idRota,
-                nomeCidade: c.trim(),
+                nome: c.trim(),
                 numSeq: index
             }
-        })
+        })}
     }
 } 
 

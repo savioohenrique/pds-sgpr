@@ -1,51 +1,36 @@
-package br.com.sgpr.teste.business;
+package br.com.sgpr.teste.business.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
-// import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
 
 @Entity
-@Table(name="viagens")
-public class VisaoViagens{
+@Table(name="viagem")
+public class Viagem {
     private int id;
-    private String origem;
-    private String destino;
     private String data;
     private String hora_saida;
     private float preco;
+    private String rota;
     private String motorista;
     private String onibus;
-    private String rota;
     private String status;
     private String empresa;
 
     @Id
-    public int getId(){
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_viagem")
+    public int getId() {
         return id;
     }
 
-    public void setId(int novoId){
-        id = novoId;
+    public void setId(int id) {
+        this.id = id;
     }
-
-    public String getOrigem(){
-        return origem;
-    }
-
-    public void setOrigem(String novaOrigem){
-        origem = novaOrigem;
-    }
-
-    public String getDestino(){
-        return destino;
-    }
-
-    public void setDestino(String novoDestino){
-        destino = novoDestino;
-    }
-
+    
     @Column(name="data_viagem")
     public String getData(){
         return data;
@@ -74,22 +59,6 @@ public class VisaoViagens{
         preco = novoPreco;
     }
 
-    public String getMotorista(){
-        return motorista;
-    }
-
-    public void setMotorista(String novoMotorista){
-        motorista = novoMotorista;
-    }
-
-    public String getOnibus(){
-        return onibus;
-    }
-
-    public void setOnibus(String novoOnibus){
-        onibus = novoOnibus;
-    }
-
     public String getRota(){
         return rota;
     }
@@ -98,13 +67,28 @@ public class VisaoViagens{
         rota = novaRota;
     }
 
-    
-    @Column(name="estado")
+    public String getMotorista(){
+        return motorista;
+    }
+
+    public void setMotorista(String novaMotorista){
+        motorista= novaMotorista;
+    }
+
+    public String getOnibus(){
+        return onibus;
+    }
+
+    public void setOnibus(String novaOnibus){
+        onibus = novaOnibus;
+    }
+
+    @Column(name="status_saida")
     public String getStatus(){
         return status;
     }
 
-    @Column(name="estado")
+    @Column(name="status_saida")
     public void setStatus(String novoStatus){
         status = novoStatus;
     }
@@ -116,4 +100,5 @@ public class VisaoViagens{
     public void setEmpresa(String novaEmpresa){
         empresa = novaEmpresa;
     }
-}   
+}
+

@@ -75,13 +75,13 @@ async function createFormUpdateDelete(row){
         })
         let cityString = "";
         for(let c of globalResouces.dependence){
-            cityString += c.nomeCidade + ", ";
+            cityString += c.nome + ", ";
         }
         let temp = Object.keys(globalResouces.main[0]);
         temp.push("rota");
         createInputForm(temp);
-        putValueIntoInput(0, Object.keys(globalResouces.dependence[0]).length, row);
-        document.getElementById("mainForm").children[3].value = cityString;
+        putValueIntoInput(0, Object.keys(globalResouces.main[0]).length, row);
+        document.getElementById("mainForm").children[5].value = cityString;
     }else if(page == 4){
         let atrVig = Object.keys(globalResouces.main[0]);
         createInputForm(atrVig.slice(3, atrVig.length));
@@ -196,8 +196,8 @@ function calHeightOfForm(numOfEleInForm){
     return (70 * numOfEleInForm) / 9;
 }
 
-function putValueIntoInput(starIndex, endIndex, row){
-    let rowTds = row.children;
+function putValueIntoInput(starIndex, endIndex, rowToGetValues){
+    let rowTds = rowToGetValues.children;
     let form = document.getElementById('mainForm').children;
     let inputs = [];
 

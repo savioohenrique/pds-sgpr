@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.sgpr.teste.business.Cidade;
-import br.com.sgpr.teste.business.CidadeService;
+import br.com.sgpr.teste.business.entity.Cidade;
+import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
+import br.com.sgpr.teste.business.service.CidadeService;
+import br.com.sgpr.teste.business.util.Mensagem;
 
 @RestController
 @RequestMapping(path = "cidades")
@@ -24,8 +26,15 @@ public class CidadeController {
     }
 
     @PostMapping()
-    public String postCidade(@RequestBody Cidade novaCidade) {
-        return cidadeService.saveCidade(novaCidade);
+    public Mensagem postCidade(@RequestBody Cidade novaCidade) {
+        try {
+            cidadeService.saveCidade(novaCidade);
+            return new Mensagem("Sucesso");
+        } catch (BusinessExceptions e) {
+            Mensagem msg = new Mensagem("Error");
+            msg.setErros(e.getListOfMenssagens());
+            return msg;
+        }
     }
 
     @DeleteMapping(path = "/{cidadeId}")

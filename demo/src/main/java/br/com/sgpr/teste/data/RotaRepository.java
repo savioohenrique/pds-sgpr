@@ -1,9 +1,14 @@
 package br.com.sgpr.teste.data;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.ArrayList;
 
-import br.com.sgpr.teste.business.Rota;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
+import br.com.sgpr.teste.business.entity.Rota;
 
 public interface RotaRepository extends CrudRepository<Rota, String>{
-    
+    @Query(value = "select * from rota where id_rota = :rotaId", nativeQuery = true)
+    public ArrayList<Rota> getRotaById(@Param("rotaId") String id);
 }
