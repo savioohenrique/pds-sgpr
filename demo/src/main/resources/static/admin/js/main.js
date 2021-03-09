@@ -6,7 +6,7 @@ var globalResouces = {
 };
 
 function loadLoginPage(){
-    window.location.href = 'http://localhost:8080/login/';
+    window.location.href = 'http://localhost:8080/logout';
 }
 
 async function createTableUsers(){   
@@ -164,14 +164,13 @@ function createRotaToPost(formId) {
 
     return {
         rota: {idRota: idRota, nome: nome, nomeOrigem: cidades[0].trim(), nomeDestino: cidades[cidades.length - 1].trim()},
-        cidades: {
-            rotaId: idRota,
-            cidades: cidades.map((c, index) => {
+        cidades: cidades.map((c, index) => {
             return {
-                nome: c.trim(),
+                idRota: idRota,
+                nomeCidade: c.trim(),
                 numSeq: index
             }
-        })}
+        })
     }
 } 
 

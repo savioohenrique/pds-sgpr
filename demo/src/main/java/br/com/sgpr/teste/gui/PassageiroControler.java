@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.ResponseBody;
 import br.com.sgpr.teste.data.PassageiroRepository;
-import br.com.sgpr.teste.business.entity.Passageiro;
+import br.com.sgpr.teste.business.Passageiro;
 
 @RestController
 @RequestMapping(path="passageiro")

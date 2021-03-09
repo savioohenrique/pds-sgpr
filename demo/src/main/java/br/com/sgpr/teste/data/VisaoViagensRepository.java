@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import br.com.sgpr.teste.business.entity.VisaoViagens;
+import br.com.sgpr.teste.business.VisaoViagens;
 
 public interface VisaoViagensRepository extends CrudRepository<VisaoViagens, Integer>{
     @Query(value = "select * from viagens where viagens.origem = :origem", nativeQuery = true)

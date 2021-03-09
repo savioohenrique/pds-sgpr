@@ -1,8 +1,8 @@
 package br.com.sgpr.teste.data;
 
 import org.springframework.data.repository.CrudRepository;
-import br.com.sgpr.teste.business.entity.VisaoRotas;
+import br.com.sgpr.teste.business.VisaoRotas;
 
-public interface VisaoRotaRepository extends CrudRepository<VisaoRotas, String>{
+public interface VisaoRotaRepository extends CrudRepository<VisaoRotas, Integer>{
     
 }
