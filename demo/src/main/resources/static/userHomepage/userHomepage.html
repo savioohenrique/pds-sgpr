@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Homepage</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../all.css">
+    <script src="./js/main.js"></script>
+    <script src="./js/dbOperations.js"></script>
+    <script src="./js/pass.js"></script>
+    <script src="./js/fakeApi.js"></script>
+</head>
+<body>
+    <header>
+        <span>SGPR</span>
+        <div class="backTripsMenu">
+            <nav class="tripsMenu">
+                <i class="fas fa-calendar-day fa-2x" onclick="loadPassPage()"></i>
+                <i class="fas fa-calendar-week fa-2x"></i>
+                <i class="fas fa-search fa-2x" onclick="loadSearchPage()"></i>
+            </nav>
+        </div>
+        <div class="userMenu">
+            <div class="backImgUser" onclick="testeMenu()">
+                <img src="../imgs/user.png" alt="foto do usuario logado">
+            </div>
+            <nav id="dropMenu">
+                <button type="button">Perfil</button>
+                <button type="button">Sair</button>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="listOfPass" id="passPage">
+            <div class="backOfPass">
+                <div class="empName-pass">
+                    <span> Empresa </span>
+                    <span> Passagem </span>
+                </div>
+    
+                <div class="backPassInfo">
+                    <div class="passRow">
+                        <div class="passCol">
+                            <span>Nome do Passageiro:</span>
+                            <span>Fulano de tal</span>
+                        </div>
+                        <div class="passCol">
+                            <span>CPF:</span>
+                            <span>12345678901</span>
+                        </div>
+                        <div class="passCol">
+                            <span>Assento:</span>
+                            <span>10</span>
+                        </div>
+                    </div>
+    
+                    <div class="passRow">
+                        <div class="passCol">
+                            <span>Origem: Natal</span>
+                            <span>Destino: Assu</span>
+                        </div>
+                        <div class="passCol">
+                            <span>Data:</span>
+                            <span>10/03/2021</span>
+                        </div>
+                        <div class="passCol">
+                            <span>Hora de Saida:</span>
+                            <span>14:00</span>
+                        </div>
+                    </div>
+    
+                    <div class="passRow rowCod">
+                        <span>Cod: 12345678901123456122190</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulario da Pesquisa -->
+        <div class="backForm" id="bkForms">
+            <div class="formContainer" id="searchMenu">
+                <form action="POST" class="forms">
+                    <input type="text" class="formsInput" placeholder="De" id="origem">
+                    <input type="text" class="formsInput" placeholder="Para" id="destino">
+                    <input type="text" class="formsInput" placeholder="Dia" id="data" disabled>
+                    <input type="text" class="formsInput" placeholder="Hora de Saida" id="hora" disabled>
+                    <input type="text" class="formsInput" placeholder="Preço" id="preco" disabled>
+                </form>
+                <div class="divBtnSearch">
+                    <button type="button" class="btnSearch" onclick="startBusca()">Pesquisar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resultado da Pesquisa -->
+        <div class="backTrips" id="bkTrips">
+        </div>
+    </main>
+</body>
+</html>

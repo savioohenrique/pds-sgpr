@@ -75,3 +75,7 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:8080/cidades/18
+
+###
+
+GET http://localhost:8080/userHomepage/

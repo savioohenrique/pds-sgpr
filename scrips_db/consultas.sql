@@ -33,6 +33,6 @@ select * from passagem;
 
 select cod_validacao, data_validade, num_assento, cpf, nome from passagem as ps, passageiro as p where ps.cpf_dono = p.cpf;
 
-delete from rota_cidades where id_rota =  't-1';
+delete from rota_cidades where id_rota =  't-5';
 
 alter table rota_cidades drop column nome_cidade;
