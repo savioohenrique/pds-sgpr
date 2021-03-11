@@ -151,4 +151,11 @@ select rota.id_rota, rota.nome_rota, c1.nome as Origem, c2.nome as Destino
 from rota, cidades as c1, cidades as c2 
 where rota.origem = c1.id_cidade and rota.destino = c2.id_cidade;
 
--- drop view rotas; 
+-- drop view rotas;
+
+create view passagensUser as
+select id_viagem, cpf_dono, data_viagem, rota, onibus, hora_saida, num_assento, status_saida
+from viagem as v, passagem as p 
+where v.id_viagem = p.viagem;
+
+-- drop view passagensUser;

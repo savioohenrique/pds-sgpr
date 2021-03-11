@@ -36,3 +36,9 @@ select cod_validacao, data_validade, num_assento, cpf, nome from passagem as ps,
 delete from rota_cidades where id_rota =  't-5';
 
 alter table rota_cidades drop column nome_cidade;
+
+select id_viagem, cpf_dono, data_viagem, hora_saida, rota, onibus, hora_saida, num_assento, status_saida
+from viagem as v, passagem as p 
+where v.id_viagem = p.viagem;
+
+select * from passagensUser;

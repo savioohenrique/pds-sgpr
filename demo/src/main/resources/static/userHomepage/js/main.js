@@ -1,4 +1,5 @@
-page = 0;
+var page = 0;
+var listOfPass = getListOfPass();
 
 function testeMenu() {
     let menuDropDown = document.getElementById("dropMenu");
@@ -15,23 +16,43 @@ function loadPassPage() {
     loadPage();
 }
 
+function loadlistOfPassPage() {
+    page = 2;
+    loadPage();
+}
+
 function loadSearchPage() {
     page = 3;
     loadPage();
 }
 
-function loadPage() {
+async function loadPage() {
     // console.log(document.getElementsByTagName("main"));
     switch(page){
         case 1:
-            console.log("case 1")
-            document.getElementById("passPage").style.display = "flex";
+            console.log("loading page 1")
             document.getElementById("bkForms").style.display = "none";
             document.getElementById("bkTrips").style.display = "none";
+            document.getElementById("tableOfDivs").style.display = "none";
+
+            document.getElementById("passPage").style.display = "flex";
+            createViewPass(listOfPass[0]);
+            break;
+        case 2:
+            console.log("loading page 2")
+            document.getElementById("passPage").style.display = "none";
+            document.getElementById("bkForms").style.display = "none";
+            document.getElementById("bkTrips").style.display = "none";
+
+            document.getElementById("tableOfDivs").style.display = "Flex";
+            listOfPass = await getViagens("http://localhost:8080/passagens/40811470784");
+            createListOfPass();
             break;
         case 3:
-            console.log("case 2")
+            console.log("loading page 3")
             document.getElementById("passPage").style.display = "none";
+            document.getElementById("tableOfDivs").style.display = "none";
+
             document.getElementById("bkForms").style.display = "flex";
             document.getElementById("bkTrips").style.display = "flex";
             break;
@@ -50,8 +71,8 @@ async function startBusca(){
         alert('Escolha uma origem(local de partida)!');
     }else{
         document.getElementById('bkTrips').innerHTML = "";
-        viagens = await getViagens(`http://localhost:8080/viagem/busca?origem=${org}&destino=${des}`);
-        // viagens = getFakeResponse();
+        // viagens = await getViagens(`http://localhost:8080/viagens/busca?origem=${org}&destino=${des}`);
+        viagens = getFakeResponse();
         console.log(viagens);
         if(viagens.length == 0){
             loadWaringNotFoundViagens();

@@ -165,7 +165,49 @@ main {
     justify-content: center;
 }
 
-/* teste bucsar viagem */
+/* Lista de passagens */
+.backPassList {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.listOfPass-row {
+    width: 60%;
+    display: flex;
+    margin-bottom: 1%;
+    box-shadow: 1px 1px 3px #5c5c5c;
+    border-radius: 5px;
+}
+
+.listOfPass-span {
+    width: 20%;
+    height: 7vh;
+    text-align: center;
+}
+
+.listOfPass-divBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listOfPass-divBtn button {
+    width: 80%;
+    height: 60%;
+    border: none;
+    border-radius: 10px;
+    background-color: #941C2F;
+    color: white;
+}
+
+.listOfPass-divBtn button:hover {
+    cursor: pointer;
+}
+
+
+/* buscar viagem */
 .backForm{
     height: 100%;
     width: 100vw;

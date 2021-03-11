@@ -113,3 +113,83 @@ function createFakePassContainer(){
 
     return container;
 }
+
+function createViewPass(pass) {
+    document.getElementById("passPage").innerHTML = "";
+    let backOfPass = document.createElement("DIV");
+    backOfPass.className = "backOfPass";
+
+    //add empName
+    backOfPass.appendChild(createEmpName(pass));
+
+    //add passInfo
+    backOfPass.appendChild(createPassInfo(pass));
+
+    document.getElementById("passPage").appendChild(backOfPass);
+}
+
+function createEmpName(pass) {
+    let divEmpName = document.createElement("DIV");
+    divEmpName.className = "empName-pass";
+
+    let spanEmpName = document.createElement("SPAN");
+    spanEmpName.innerText = pass.empresa;
+    divEmpName.appendChild(spanEmpName);
+    
+    
+    let spanPass = document.createElement("SPAN");
+    spanPass.innerText = "Passagem";
+    divEmpName.appendChild(spanPass);
+
+    return divEmpName;
+}
+
+function createPassInfo(pass) {
+    let backPassInfo = document.createElement("DIV");
+    backPassInfo.className = "backPassInfo";
+
+    //create first row
+    let row1 = createPassRow();
+    row1.appendChild(createPassCol("Nome do Passageiro", pass.nome, null));
+    row1.appendChild(createPassCol("CPF", pass.cpf, null));
+    row1.appendChild(createPassCol("Assento", pass.assento, null));
+    backPassInfo.appendChild(row1);
+
+    //create second row
+    let row2 = createPassRow();
+    row2.appendChild(createPassCol("", pass.origem, pass.destino));
+    row2.appendChild(createPassCol("Data", pass.data, null));
+    row2.appendChild(createPassCol("Hora de Saida", pass.horaSaida, null));
+    backPassInfo.appendChild(row2);
+
+    //create third row
+    let row3 = createPassRow();
+    row3.classList.add("rowCod");
+    let spanCod = document.createElement("SPAN");
+    spanCod.innerText = pass.cod;
+    row3.appendChild(spanCod);
+    backPassInfo.appendChild(row3);
+
+    return backPassInfo;
+}
+
+function createPassRow() {
+    let divPassRow = document.createElement("DIV");
+    divPassRow.className = "passRow";
+    return divPassRow;
+}
+
+function createPassCol(infoName, infoValue, infoValue2) {
+    let divPassCol = document.createElement("DIV");
+    divPassCol.className = "passCol";
+
+    let spanInfoName = document.createElement("SPAN");
+    spanInfoName.innerText = !infoValue2 ? infoName + ":" : "Origem: " + infoValue;
+    divPassCol.appendChild(spanInfoName);
+
+    let spanInfoValue = document.createElement("SPAN");
+    spanInfoValue.innerText = !infoValue2 ? infoValue : "Destino: " + infoValue2;
+    divPassCol.appendChild(spanInfoValue);
+
+    return divPassCol;
+}
