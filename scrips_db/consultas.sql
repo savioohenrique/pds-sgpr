@@ -5,7 +5,7 @@ select * from viagens;
 
 select * from viagem;
 
-delete from viagem;
+-- delete from viagem;
 
 select * from empresa;
 

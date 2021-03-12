@@ -200,6 +200,7 @@ main {
     border-radius: 10px;
     background-color: #941C2F;
     color: white;
+    box-shadow: 1px 1px 3px #5c5c5c;
 }
 
 .listOfPass-divBtn button:hover {

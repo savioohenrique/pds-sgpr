@@ -1,4 +1,4 @@
-var viagens = [];
+var viagensSerach = [];
 let empColors = ['emp1', 'emp2', 'emp3', 'emp4', 'emp5'];
 
 function createNewRow(){
@@ -80,15 +80,15 @@ async function buildResponseOfSearch(){
     let lastIndex = 0;
     let row = {};
 
-    let qtyOfRows = viagens.length % 3 == 0 ? viagens.length / 3 : Math.floor((viagens.length / 3)) + 1;
+    let qtyOfRows = viagensSerach.length % 3 == 0 ? viagensSerach.length / 3 : Math.floor((viagensSerach.length / 3)) + 1;
     for(let i = 0; i < qtyOfRows; i++){
         row = createNewRow();
         
         for(let j = 0; j < 3; j++){
-            if(lastIndex >= viagens.length){
+            if(lastIndex >= viagensSerach.length){
                 break;
             }else{
-                row.appendChild(createPassElement(viagens[lastIndex]));
+                row.appendChild(createPassElement(viagensSerach[lastIndex]));
                 lastIndex++;
             }
         }
@@ -96,14 +96,12 @@ async function buildResponseOfSearch(){
         document.getElementById('bkTrips').appendChild(row);
     }
 
-    if(viagens.length % 3 !== 0){
-        for(let i = viagens.length; i < (viagens.length + 2); i++){
+    if(viagensSerach.length % 3 !== 0){
+        for(let i = viagensSerach.length; i < (viagensSerach.length + 2); i++){
             if(i % 3 == 0) break;
             row.appendChild(createFakePassContainer());
         }
     }
-
-    console.log("opa")
 }
 
 function createFakePassContainer(){

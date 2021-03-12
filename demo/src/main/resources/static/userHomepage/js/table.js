@@ -1,9 +1,16 @@
-function createListOfPass() {
+async function createListOfPass() {
     document.getElementById("tableOfDivs").innerHTML = "";
     createHeaders();
-    console.log(listOfPass);
+
     for(let pass of listOfPass) {
-        createRow(pass);
+        let viagem = await getResource("http://localhost:8080/viagem/" + pass.viagem); 
+        viagens.push(viagem);
+        createRow({
+            cpf: pass.cpf,
+            origem: viagem.origem,
+            destino: viagem.destino,
+            data: viagem.data
+        });
     }
 }
 
