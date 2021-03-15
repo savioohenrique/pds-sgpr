@@ -127,6 +127,7 @@ async function addResource(event){
     switch(page){
         case 3:
             let {rota, cidades} = createRotaToPost(event.target.parentNode.id);
+            console.log(cidades);
             await postResource('http://localhost:8080/rota', rota);
             await postResource('http://localhost:8080/rota/cidades', cidades);
             break;
@@ -159,12 +160,16 @@ function buildJSO(formId){
 function createRotaToPost(formId) {
     let idRota  = document.getElementById(formId).children[1].value;
     let nome    = document.getElementById(formId).children[2].value;
-    let cidades = document.getElementById(formId).children[3].value;
+    let cidades = document.getElementById(formId).children[5].value;
     cidades = cidades.split(",");
+    console.log(cidades);
 
     return {
-        rota: {idRota: idRota, nome: nome, nomeOrigem: cidades[0].trim(), nomeDestino: cidades[cidades.length - 1].trim()},
-        cidades: cidades.map((c, index) => {
+        // rota: {idRota: idRota, nome: nome, nomeOrigem: cidades[0].trim(), nomeDestino: cidades[cidades.length - 1].trim()},
+        rota: {idRota: idRota, nome: nome, nomeOrigem: document.getElementById(formId).children[3].value, nomeDestino: document.getElementById(formId).children[4].value},
+        cidades: {
+            rotaId: idRota,
+            cidades: cidades.map((c, index) => {
             return {
                 idRota: idRota,
                 nomeCidade: c.trim(),

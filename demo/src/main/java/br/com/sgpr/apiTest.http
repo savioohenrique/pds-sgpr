@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/viagem/5
+DELETE http://localhost:8080/viagem/1
 
 ###
 
@@ -30,16 +30,18 @@ GET http://localhost:8080/rota
 ###
 GET http://localhost:8080/rota/t-5/cidades
 
+
 ###
 
-DELETE http://localhost:8080/rota/t-51
+DELETE http://localhost:8080/rota/t-6
+
 
 ###
 
 POST http://localhost:8080/rota
 Content-Type: application/json
 
-{"idRota": "t-51", "nome": "teste2", "nomeOrigem": "Mossoro", "nomeDestino": "Natal"}
+{"idRota": "t-6", "nome": "teste2", "nomeOrigem": "Mossoro", "nomeDestino": "Natal"}
 
 ###
 
@@ -72,3 +74,11 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:8080/cidades/18
+
+###
+
+GET http://localhost:8080/passagens/40811470784
+
+###
+
+DELETE http://localhost:8080/passagens/1

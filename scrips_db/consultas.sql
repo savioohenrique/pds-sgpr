@@ -5,7 +5,7 @@ select * from viagens;
 
 select * from viagem;
 
-delete from viagem;
+-- delete from viagem;
 
 select * from empresa;
 
@@ -33,6 +33,20 @@ select * from passagem;
 
 select cod_validacao, data_validade, num_assento, cpf, nome from passagem as ps, passageiro as p where ps.cpf_dono = p.cpf;
 
-delete from rota_cidades where id_rota =  't-1';
+delete from rota_cidades where id_rota =  't-5';
 
 alter table rota_cidades drop column nome_cidade;
+
+select id_viagem, cpf_dono, data_viagem, hora_saida, rota, onibus, hora_saida, num_assento, status_saida
+from viagem as v, passagem as p 
+where v.id_viagem = p.viagem;
+
+select * from passagensUser;
+
+update viagem set data_viagem = '2021-03-15' where id_viagem = 1;
+
+update viagem set assentos_disponiveis = 19 where id_viagem = 1;
+
+insert into passagem values('1', 1, 5, '40811470784');
+
+insert into passagem values('2', 2, 5, '40811470784');

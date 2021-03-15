@@ -20,6 +20,7 @@ public class VisaoViagens{
     private String rota;
     private String status;
     private String empresa;
+    private int assentosDisponiveis;
 
     @Id
     public int getId(){
@@ -115,5 +116,14 @@ public class VisaoViagens{
 
     public void setEmpresa(String novaEmpresa){
         empresa = novaEmpresa;
+    }
+
+    @Column(name = "assentos_disponiveis")
+    public int getAssentosDisponiveis() {
+        return assentosDisponiveis;
+    }
+
+    public void setAssentosDisponiveis(int assentosDisponiveis) {
+        this.assentosDisponiveis = assentosDisponiveis;
     }
 }   

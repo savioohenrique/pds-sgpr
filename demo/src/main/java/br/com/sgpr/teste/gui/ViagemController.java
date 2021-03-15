@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import br.com.sgpr.teste.business.Viagem;
@@ -25,6 +26,11 @@ public class ViagemController {
 		return viagemService.getVisaoViagens();
     }
     
+    @GetMapping(path = "/{viagemId}")
+    public VisaoViagens getViagemById(@PathVariable("viagemId") int viagemId) {
+        return viagemService.getViagemById(viagemId);
+    }
+
     @PostMapping()
     public String postViagem(@RequestBody Viagem novaViagem){
         return viagemService.saveViagem(novaViagem);

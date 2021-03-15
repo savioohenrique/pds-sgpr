@@ -19,4 +19,9 @@ public class ViewController {
     public String getBuscaPage(){
         return "busca.html";
     }
+
+    @GetMapping(path = "userHomepage")
+    public String getUserHomepagePage(){
+        return "userHomepage.html";
+    }
 }
