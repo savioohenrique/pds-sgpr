@@ -15,7 +15,7 @@ async function deletePassOnDB(passId) {
             method: "DELETE"
         });
         let responseObj = await response.json();
-        console.log(responseObj);
+        // console.log(responseObj);
         return responseObj;
     } catch (error) {
         console.log(error);
