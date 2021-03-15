@@ -1,6 +1,7 @@
 package br.com.sgpr.teste.gui;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -30,7 +31,7 @@ public class PassagensViagemController {
         return passagemService.getUserPass(userId);
     }
 
-    @PutMapping(path = "/cancelar/{passId}")
+    @DeleteMapping(path = "/{passId}")
     public Mensagem cancelarPassagem(@PathVariable("passId") String passId) {
         try {
             passagemService.cancelarViagem(passId);

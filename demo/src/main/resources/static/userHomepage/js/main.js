@@ -114,3 +114,8 @@ function loadWaringNotFoundViagens(){
     div.appendChild(span);
     document.getElementById('bkTrips').appendChild(div);
 }
+
+function deletePass(event) {
+    let passId = event.target.parentNode.parentNode.children[0].innerText;
+    deletePassOnDB(passId);
+}

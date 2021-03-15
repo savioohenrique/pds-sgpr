@@ -1,6 +1,7 @@
 package br.com.sgpr.teste.business.service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class PassagemService {
     }
 
     public void cancelarViagem(String passId) throws BusinessExceptions{
-        System.out.println("Cancelando a pass " + passId);
+        System.out.println("Cancelando a passagem " + passId);
         TempPassagem pass = passagemRepository.findById(passId).orElseGet(() -> null);
         Viagem viagem = viagemRepository.findById(pass.getViagem()).orElseGet(() -> null);
 
@@ -41,12 +42,47 @@ public class PassagemService {
 
         ArrayList<String> listOfErros = new ArrayList<>();
         if(today.isBefore(viagemDate)) {
-            String mouth = today.getMonthValue() > 9 ? "" + today.getMonthValue() : "0" + today.getMonthValue();
-            LocalDate yesterday = LocalDate.parse(today.getYear() + "-" + mouth + "-" + (today.getDayOfMonth() - 1));
-            System.out.println(yesterday);
-            // todo checar se a data do dia do cancelamento é valida. 
+            String mouth = viagemDate.getMonthValue() > 9 ? "" + viagemDate.getMonthValue() : "0" + viagemDate.getMonthValue();
+            LocalDate dayBeforeViagem = LocalDate.parse(viagemDate.getYear() + "-" + mouth + "-" + (viagemDate.getDayOfMonth() - 1));
+
+            if(today.isEqual(dayBeforeViagem)) {
+                LocalTime timeNow = LocalTime.now();
+                LocalTime horaSiadaViagem = LocalTime.parse(viagem.getHoraSaida());
+
+                int timeNowInt = (timeNow.getHour() * 100) + timeNow.getMinute();
+                int horaSiadaViagemInt = (horaSiadaViagem.getHour() * 100) + horaSiadaViagem.getMinute();
+                if((timeNowInt - horaSiadaViagemInt) <= 0) {
+                    //pode cancelar a viagem
+                    deletePassagemOnDB(passId, viagem.getId());
+                }else {
+                    listOfErros.add("Passagem não pode ser cancelada, menos de 24h para a viagem.");
+                }
+            }else {
+                //pode cancelar a viagem
+                deletePassagemOnDB(passId, viagem.getId());
+            }
+
         }else {
-            listOfErros.add("Data da Viagem é invalida");
+            if(today.isEqual(viagemDate)) {
+                listOfErros.add("Passagem não pode ser cancelada, menos de 24h para a viagem.");
+            }else {
+                listOfErros.add("Passagem não pode ser cancelada.");
+            }
         }
-	}
+
+        if(listOfErros.size() > 0) {
+            throw new BusinessExceptions(listOfErros);
+        }
+    }
+    
+    private void deletePassagemOnDB(String passId, int viagemOfPassagemToDeleteId){
+        Viagem viagem = viagemRepository.findById(viagemOfPassagemToDeleteId).orElseGet(() -> null);
+        if(viagem.getAsssentosDisponiveis() > 0) {
+            passagemRepository.deleteById(passId);
+            viagemRepository.updateAssentosDisponiveis(viagem.getId(), viagem.getAsssentosDisponiveis() - 1);
+        }else {
+            //to do, criar exeção para esse caso.
+            System.out.println("Viagem não tem passagens");
+        }
+    }
 }

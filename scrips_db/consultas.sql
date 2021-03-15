@@ -42,3 +42,11 @@ from viagem as v, passagem as p
 where v.id_viagem = p.viagem;
 
 select * from passagensUser;
+
+update viagem set data_viagem = '2021-03-15' where id_viagem = 1;
+
+update viagem set assentos_disponiveis = 19 where id_viagem = 1;
+
+insert into passagem values('1', 1, 5, '40811470784');
+
+insert into passagem values('2', 2, 5, '40811470784');
