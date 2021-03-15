@@ -9,15 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-<<<<<<< HEAD
-import br.com.sgpr.teste.business.PassagensViagem;
-import br.com.sgpr.teste.data.PassagensViagemsRepository;
-=======
 import br.com.sgpr.teste.business.entity.PassagensViagem;
 import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
 import br.com.sgpr.teste.business.service.PassagemService;
 import br.com.sgpr.teste.business.util.Mensagem;
->>>>>>> crud-viagem-rota
 
 @RestController
 @RequestMapping(path="passagens")

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import br.com.sgpr.teste.business.RotaCidades;
+import br.com.sgpr.teste.business.entity.RotaCidades;
 
 public interface RotaCidadesRepository extends CrudRepository<RotaCidades, String>{
     @Query(value = "select * from rota_cidades where id_rota = :idRota", nativeQuery = true)
