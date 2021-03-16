@@ -152,3 +152,11 @@ from rota, cidades as c1, cidades as c2
 where rota.origem = c1.id_cidade and rota.destino = c2.id_cidade;
 
 -- drop view rotas;
+
+DROP TABLE IF EXISTS usuario;
+CREATE TABLE usuario (
+  login varchar(100) NOT NULL,
+  nome_completo varchar(255) DEFAULT NULL,
+  senha varchar(255) DEFAULT NULL,
+  PRIMARY KEY (login)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
