@@ -3,15 +3,18 @@ package br.com.sgpr.teste.business.service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.sgpr.teste.business.entity.Rota;
+import br.com.sgpr.teste.business.entity.TempOnibus;
 import br.com.sgpr.teste.business.entity.Viagem;
 import br.com.sgpr.teste.business.entity.VisaoViagens;
 import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
 import br.com.sgpr.teste.data.RotaRepository;
+import br.com.sgpr.teste.data.TempOnibusRepository;
 import br.com.sgpr.teste.data.ViagemRepository;
 import br.com.sgpr.teste.data.VisaoViagensRepository;
 
@@ -22,18 +25,21 @@ public class ViagemService {
     @Autowired
 	private VisaoViagensRepository viagensRepository;
 	@Autowired
-    private RotaRepository rotaRepository;
+	private RotaRepository rotaRepository;
+	@Autowired
+	private TempOnibusRepository onibusRepository;
 
 	public Iterable<Viagem> getViagens(){
         System.out.println("Pegando todas as viagens...");
 		return viagemRepository.findAll();
     }
 
-    public String saveViagem(Viagem novaViagem) throws BusinessExceptions{
+    public void saveViagem(Viagem novaViagem) throws BusinessExceptions{
 		System.out.println("Salvando nova viagem...");
 		validateViagem(novaViagem);
+		TempOnibus onibus = onibusRepository.findById(novaViagem.getOnibus()).orElseGet(() -> null);
+		novaViagem.setAsssentosDisponiveis(onibus.getNumAssentos());
 		viagemRepository.save(novaViagem);
-        return "Saved";
     }
 
     public String deleteViagem(int viagemId){
@@ -42,9 +48,16 @@ public class ViagemService {
         return new String("Viagem de id " + viagemId + " deletada");
     }
 
+	//Visão das viagens
+
 	public Iterable<VisaoViagens> getVisaoViagens(){
 		System.out.println("Pegando todas as viagens...");
 		return viagensRepository.findAll();
+	}
+
+	public VisaoViagens getViagemById(int viagemId) {
+		Optional<VisaoViagens> viagem = viagensRepository.findById(viagemId);
+		return viagem.orElseGet(() -> null);
 	}
 
 	public Iterable<VisaoViagens> pesquisarViagens(String origem, String destino){

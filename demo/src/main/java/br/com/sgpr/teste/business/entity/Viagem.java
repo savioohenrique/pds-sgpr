@@ -19,6 +19,7 @@ public class Viagem {
     private String onibus;
     private String status;
     private String empresa;
+    private int asssentosDisponiveis;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -99,6 +100,15 @@ public class Viagem {
 
     public void setEmpresa(String novaEmpresa){
         empresa = novaEmpresa;
+    }
+
+    @Column(name = "assentos_disponiveis")
+    public int getAsssentosDisponiveis() {
+        return asssentosDisponiveis;
+    }
+
+    public void setAsssentosDisponiveis(int asssentosDisponiveis) {
+        this.asssentosDisponiveis = asssentosDisponiveis;
     }
 }
 

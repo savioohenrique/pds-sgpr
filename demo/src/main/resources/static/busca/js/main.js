@@ -16,7 +16,7 @@ async function startBusca(){
         // }else{
         //     viagens = await getViagens(makeUrlWithOrgDes(org, des));
         // }
-        viagens = await getViagens(`http://localhost:8080/viagens/busca?origem=${org}&destino=${des}`);
+        viagens = await getViagens(`http://localhost:8080/viagem/busca?origem=${org}&destino=${des}`);
 
         activeAnimation2();
         if(viagens.length == 0){
