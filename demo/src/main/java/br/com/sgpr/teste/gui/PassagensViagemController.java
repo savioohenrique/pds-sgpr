@@ -42,4 +42,16 @@ public class PassagensViagemController {
             return msg;
         }
     }
+
+    @PutMapping(path = "/validate/{passId}")
+    public Mensagem validadePass(@PathVariable("passId") String passId) {
+        try {
+            passagemService.validetedPassagem(passId);
+            return new Mensagem("Sucesso");
+        } catch (Exception e) {
+            Mensagem msg = new Mensagem("Error");
+            msg.addErro(e.getMessage());
+            return msg;
+        }
+    }
 }

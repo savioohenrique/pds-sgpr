@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.sgpr.teste.business.entity.PassagemUsada;
 import br.com.sgpr.teste.business.entity.PassagensViagem;
 import br.com.sgpr.teste.business.entity.TempPassagem;
 import br.com.sgpr.teste.business.entity.Viagem;
 import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
+import br.com.sgpr.teste.data.PassagemUsadaRepository;
 import br.com.sgpr.teste.data.PassagensViagemsRepository;
 import br.com.sgpr.teste.data.TempPassagemRepository;
 import br.com.sgpr.teste.data.ViagemRepository;
@@ -21,6 +23,8 @@ public class PassagemService {
     private PassagensViagemsRepository passagensViagensRepository;
     @Autowired
     private TempPassagemRepository passagemRepository;
+    @Autowired
+    private PassagemUsadaRepository passagemUsadaRepository;
     @Autowired
     private ViagemRepository viagemRepository;
 
@@ -83,6 +87,19 @@ public class PassagemService {
         }else {
             //to do, criar exeção para esse caso.
             System.out.println("Viagem não tem passagens");
+        }
+    }
+
+    public void validetedPassagem(String passId) throws Exception{
+        System.out.println("Validando a passagem de id " + passId);
+        TempPassagem pass = passagemRepository.findById(passId).orElseGet(() -> null);
+
+        if(pass == null) {
+            throw new Exception("Passagem Inválida");
+        }else {
+            PassagemUsada oldPass = new PassagemUsada(pass);
+            passagemRepository.deleteById(pass.getCodValidacao());
+            passagemUsadaRepository.save(oldPass);
         }
     }
 }

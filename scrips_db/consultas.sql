@@ -50,3 +50,7 @@ update viagem set assentos_disponiveis = 19 where id_viagem = 1;
 insert into passagem values('1', 1, 5, '40811470784');
 
 insert into passagem values('2', 2, 5, '40811470784');
+
+select * from passagem where cod_validacao = '2';
+
+select * from passagem_usadas;
