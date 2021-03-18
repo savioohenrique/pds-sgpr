@@ -90,13 +90,14 @@ public class PassagemService {
         }
     }
 
-    public void validetedPassagem(String passId) throws Exception{
-        System.out.println("Validando a passagem de id " + passId);
-        TempPassagem pass = passagemRepository.findById(passId).orElseGet(() -> null);
+    public void validetedPassagem(PassagensViagem passToValidate) throws Exception{
+        System.out.println("Validando a passagem de id " + passToValidate.getCodValidacao() + " da viagem " +  passToValidate.getViagem());
+        TempPassagem pass = passagemRepository.findById(passToValidate.getCodValidacao()).orElseGet(() -> null);
+        Viagem viagem = viagemRepository.findById(pass.getViagem()).orElseGet(() -> null);
 
-        if(pass == null) {
+        if(pass == null || viagem.getId() != passToValidate.getViagem()) {
             throw new Exception("Passagem Inválida");
-        }else {
+        }else{
             PassagemUsada oldPass = new PassagemUsada(pass);
             passagemRepository.deleteById(pass.getCodValidacao());
             passagemUsadaRepository.save(oldPass);

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class PassagensViagem {
     private String codValidacao;
-    private String viagem;
+    private int viagem;
     private int numAssento;
     private String cpf;
     private String nome;
@@ -24,11 +24,11 @@ public class PassagensViagem {
     }
 
 
-    public String getViagem() {
+    public int getViagem() {
         return viagem;
     }
 
-    public void setViagem(String viagem) {
+    public void setViagem(int viagem) {
         this.viagem = viagem;
     }
 
