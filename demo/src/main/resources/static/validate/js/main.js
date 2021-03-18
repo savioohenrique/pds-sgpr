@@ -1,7 +1,7 @@
 var viagens = [];
 var page = 0;
 var passToValidate = {
-    viagemId: "",
+    viagem: "",
     codValidacao: ""
 };
 var pageStack = [];
@@ -128,8 +128,8 @@ function createPass(viagem) {
 function loadValidate(event) {
     page = 3;
     pageStack.push(3);
-    passToValidate.viagemId = event.target.parentNode.children[0].innerText;
-    document.getElementById("spanValidateViagem").innerText = passToValidate.viagemId;
+    passToValidate.viagem = event.target.parentNode.children[0].innerText;
+    document.getElementById("spanValidateViagem").innerText = passToValidate.viagem;
     document.getElementById("passCod").value = "";
     loadPage();
 }
@@ -141,9 +141,32 @@ function returnLastPage() {
     }
 }
 
-function validatePass() {
+async function validatePass() {
     passToValidate.codValidacao = document.getElementById("passCod").value;
     document.getElementById("passCod").value = "";
 
-    console.log(passToValidate);
+    // console.log(passToValidate);
+    passToValidate.viagem = passToValidate.viagem.split("-");
+    passToValidate.viagem = passToValidate.viagem[1];
+    // console.log(passToValidate);
+
+    try {
+        let response = await fetch("http://localhost:8080/passagens/validate", {
+            method: "PUT",
+            headers: {
+                "Accept": "application/json",
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(passToValidate)
+        })
+        let resObj = await response.json();
+
+        if(resObj.status == "Sucesso") {
+            alert("Passagem Validade com sucesso");
+        }else {
+            alert(resObj.erros);
+        }
+    } catch (error) {
+        console.log(error);
+    }
 }
