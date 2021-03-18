@@ -79,7 +79,7 @@ public class PassagemService {
         Viagem viagem = viagemRepository.findById(viagemOfPassagemToDeleteId).orElseGet(() -> null);
         if(viagem.getAsssentosDisponiveis() > 0) {
             passagemRepository.deleteById(passId);
-            viagemRepository.updateAssentosDisponiveis(viagem.getId(), viagem.getAsssentosDisponiveis() - 1);
+            viagemRepository.updateAssentosDisponiveis(viagem.getId(), viagem.getAsssentosDisponiveis() + 1);
         }else {
             //to do, criar exeção para esse caso.
             System.out.println("Viagem não tem passagens");
