@@ -86,3 +86,7 @@ DELETE http://localhost:8080/passagens/1
 ###
 
 PUT http://localhost:8080/passagens/validate/2
+
+###
+
+GET http://localhost:8080/viagem/motorista/29306192100

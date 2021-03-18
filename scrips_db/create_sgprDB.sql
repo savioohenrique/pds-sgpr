@@ -172,6 +172,17 @@ where rota.origem = c1.id_cidade and rota.destino = c2.id_cidade;
 
 -- drop view rotas;
 
+create view viagens_simples as
+select v.id_viagem as id, c.nome as Origem, c1.nome as Destino, v.data_viagem, v.hora_saida, v.preco, v.motorista, v.onibus as onibus, r.id_rota as rota, v.status_saida as estado, e.nome as empresa, v.assentos_disponiveis 
+from viagem as v, rota as r, cidades as c, cidades as c1, empresa as e
+where 
+v.rota = r.id_rota and 
+r.origem = c.id_cidade and
+r.destino = c1.id_cidade and
+v.empresa = e.id_empresa;
+
+-- drop view viagens_simples;
+
 DROP TABLE IF EXISTS usuario;
 CREATE TABLE usuario (
   login varchar(100) NOT NULL,
