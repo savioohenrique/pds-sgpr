@@ -35,7 +35,7 @@ public class PassagensViagemController {
     @DeleteMapping(path = "/{passId}")
     public Mensagem cancelarPassagem(@PathVariable("passId") String passId) {
         try {
-            passagemService.cancelarViagem(passId);
+            passagemService.cancelarPassagem(passId);
             return new Mensagem("Passagem Cancelada");
         } catch (BusinessExceptions e) {
             Mensagem msg = new Mensagem("Error");

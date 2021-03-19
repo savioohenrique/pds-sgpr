@@ -36,7 +36,7 @@ public class PassagemService {
         return passagensViagensRepository.getUserPass(userId);
     }
 
-    public void cancelarViagem(String passId) throws BusinessExceptions{
+    public void cancelarPassagem(String passId) throws BusinessExceptions{
         System.out.println("Cancelando a passagem " + passId);
         TempPassagem pass = passagemRepository.findById(passId).orElseGet(() -> null);
         Viagem viagem = viagemRepository.findById(pass.getViagem()).orElseGet(() -> null);
