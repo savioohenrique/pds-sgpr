@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 // import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.sgpr.teste.business.entity.AuxRotaCidade;
+import br.com.sgpr.teste.business.entity.visoes.AuxRotaCidade;
 import br.com.sgpr.teste.business.entity.Rota;
-import br.com.sgpr.teste.business.entity.VisaoRotas;
+import br.com.sgpr.teste.business.entity.visoes.VisaoRotas;
 import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
 import br.com.sgpr.teste.business.service.RotaCidadesService;
 import br.com.sgpr.teste.business.service.RotaService;
 import br.com.sgpr.teste.business.util.Mensagem;
-import br.com.sgpr.teste.business.entity.VisaoRotaCidade;
+import br.com.sgpr.teste.business.entity.visoes.VisaoRotaCidade;
 
 @RestController
 @RequestMapping(path="rota")

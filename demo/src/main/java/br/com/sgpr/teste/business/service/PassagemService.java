@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.sgpr.teste.business.entity.PassagemUsada;
-import br.com.sgpr.teste.business.entity.PassagensViagem;
+import br.com.sgpr.teste.business.entity.visoes.VisaoPassagens;
 import br.com.sgpr.teste.business.entity.TempPassagem;
 import br.com.sgpr.teste.business.entity.Viagem;
 import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
@@ -28,11 +28,11 @@ public class PassagemService {
     @Autowired
     private ViagemRepository viagemRepository;
 
-    public Iterable<PassagensViagem> getPassagensViagem(String viagemId){
+    public Iterable<VisaoPassagens> getPassagensViagem(String viagemId){
         return passagensViagensRepository.getPassagens(viagemId);
     }
 
-    public Iterable<PassagensViagem> getUserPass(String userId) {
+    public Iterable<VisaoPassagens> getUserPass(String userId) {
         return passagensViagensRepository.getUserPass(userId);
     }
 
@@ -90,7 +90,7 @@ public class PassagemService {
         }
     }
 
-    public void validetedPassagem(PassagensViagem passToValidate) throws Exception{
+    public void validetedPassagem(VisaoPassagens passToValidate) throws Exception{
         System.out.println("Validando a passagem de id " + passToValidate.getCodValidacao() + " da viagem " +  passToValidate.getViagem());
         TempPassagem pass = passagemRepository.findById(passToValidate.getCodValidacao()).orElseGet(() -> null);
         Viagem viagem = viagemRepository.findById(pass.getViagem()).orElseGet(() -> null);

@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import br.com.sgpr.teste.business.entity.AuxRotaCidade;
+import br.com.sgpr.teste.business.entity.visoes.AuxRotaCidade;
 import br.com.sgpr.teste.business.entity.Cidade;
 import br.com.sgpr.teste.business.entity.Rota;
 import br.com.sgpr.teste.business.entity.RotaCidades;
-import br.com.sgpr.teste.business.entity.VisaoRotaCidade;
-import br.com.sgpr.teste.business.entity.VisaoRotas;
+import br.com.sgpr.teste.business.entity.visoes.VisaoRotaCidade;
+import br.com.sgpr.teste.business.entity.visoes.VisaoRotas;
 import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
 import br.com.sgpr.teste.data.CidadeRepository;
 import br.com.sgpr.teste.data.RotaCidadesRepository;

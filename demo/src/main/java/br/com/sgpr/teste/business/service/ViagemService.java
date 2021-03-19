@@ -12,7 +12,7 @@ import br.com.sgpr.teste.business.entity.Rota;
 import br.com.sgpr.teste.business.entity.TempOnibus;
 import br.com.sgpr.teste.business.entity.Viagem;
 import br.com.sgpr.teste.business.entity.ViagemSimples;
-import br.com.sgpr.teste.business.entity.VisaoViagens;
+import br.com.sgpr.teste.business.entity.visoes.VisaoViagens;
 import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
 import br.com.sgpr.teste.data.RotaRepository;
 import br.com.sgpr.teste.data.TempOnibusRepository;

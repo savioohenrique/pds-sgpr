@@ -1,4 +1,4 @@
-package br.com.sgpr.teste.business.entity;
+package br.com.sgpr.teste.business.entity.visoes;
 
 import java.util.ArrayList;
 

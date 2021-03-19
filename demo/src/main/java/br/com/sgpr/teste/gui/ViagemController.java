@@ -15,7 +15,7 @@ import br.com.sgpr.teste.business.entity.Viagem;
 import br.com.sgpr.teste.business.entity.ViagemSimples;
 import br.com.sgpr.teste.business.service.ViagemService;
 import br.com.sgpr.teste.business.util.Mensagem;
-import br.com.sgpr.teste.business.entity.VisaoViagens;
+import br.com.sgpr.teste.business.entity.visoes.VisaoViagens;
 import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
 
 @RestController

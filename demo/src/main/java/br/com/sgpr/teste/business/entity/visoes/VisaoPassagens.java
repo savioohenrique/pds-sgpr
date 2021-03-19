@@ -1,11 +1,11 @@
-package br.com.sgpr.teste.business.entity;
+package br.com.sgpr.teste.business.entity.visoes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class PassagensViagem {
+public class VisaoPassagens {
     private String codValidacao;
     private int viagem;
     private int numAssento;
