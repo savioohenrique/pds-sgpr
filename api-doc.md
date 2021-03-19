@@ -45,6 +45,30 @@ Response:
 ]
 ```
 
+Resquest:
+`http://localhost:8080/viagem/busca?origem=nomeOrigem&destino=nomeDestino`
+
+ou
+
+`http://localhost:8080/viagem/busca?origem=nomeOrigem`
+
+Response:
+```
+{
+	assentosDisponiveis: 20
+	data: "2021-06-15"
+	destino: "Natal"
+	empresa: "Sertão"
+	horaSaida: "13:00"
+	id: 1
+	motorista: "Isabella Rayssa Carvalho"
+	onibus: "HZV8911"
+	origem: "Assu"
+	preco: 150
+	rota: "a-n"
+	status: "confirmada"
+}
+```
 Resquet:
 
 `GET http://localhost:8080/viagem/motorista/motoristId`
