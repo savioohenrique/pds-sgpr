@@ -21,3 +21,5 @@ No Windows:
 1. Tela de login: http://localhost:8080/login/
 2. Tela de busca: http://localhost:8080/busca/
 3. Tela de admin: http://localhost:8080/admin/
+4. Tela do passageiro: http://localhost:8080/userHomepage/
+5. Tela de validar passagens: http://localhost:8080/validate/

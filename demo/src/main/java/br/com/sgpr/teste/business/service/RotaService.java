@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.sgpr.teste.business.entity.Rota;
-import br.com.sgpr.teste.business.entity.VisaoRotas;
+import br.com.sgpr.teste.business.entity.visoes.VisaoRotas;
 import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
 import br.com.sgpr.teste.data.CidadeRepository;
 import br.com.sgpr.teste.data.RotaRepository;

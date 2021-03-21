@@ -115,7 +115,13 @@ function loadWaringNotFoundViagens(){
     document.getElementById('bkTrips').appendChild(div);
 }
 
-function deletePass(event) {
+async function deletePass(event) {
     let passId = event.target.parentNode.parentNode.children[0].innerText;
-    deletePassOnDB(passId);
+    let res = await deletePassOnDB(passId);
+    console.log(res);
+    if(res.status == "Error") {
+        alert(res.erros);
+    }else {
+        alert("Passagem Cancelada");
+    }
 }

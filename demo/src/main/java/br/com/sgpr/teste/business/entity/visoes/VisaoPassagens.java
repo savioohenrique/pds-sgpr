@@ -1,13 +1,13 @@
-package br.com.sgpr.teste.business.entity;
+package br.com.sgpr.teste.business.entity.visoes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class PassagensViagem {
+public class VisaoPassagens {
     private String codValidacao;
-    private String viagem;
+    private int viagem;
     private int numAssento;
     private String cpf;
     private String nome;
@@ -24,11 +24,11 @@ public class PassagensViagem {
     }
 
 
-    public String getViagem() {
+    public int getViagem() {
         return viagem;
     }
 
-    public void setViagem(String viagem) {
+    public void setViagem(int viagem) {
         this.viagem = viagem;
     }
 

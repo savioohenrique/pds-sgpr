@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import br.com.sgpr.teste.business.entity.Viagem;
+import br.com.sgpr.teste.business.entity.ViagemSimples;
 import br.com.sgpr.teste.business.service.ViagemService;
 import br.com.sgpr.teste.business.util.Mensagem;
-import br.com.sgpr.teste.business.entity.VisaoViagens;
+import br.com.sgpr.teste.business.entity.visoes.VisaoViagens;
 import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
 
 @RestController
@@ -30,6 +31,11 @@ public class ViagemController {
     @GetMapping(path = "/{viagemId}")
     public VisaoViagens getViagemById(@PathVariable("viagemId") int viagemId) {
         return viagemService.getViagemById(viagemId);
+    }
+
+    @GetMapping(path = "/motorista/{motoristaId}")
+    public Iterable<ViagemSimples> getViagemByMotoristaId(@PathVariable("motoristaId") String motoristaId) {
+        return viagemService.getViagemByMotorita(motoristaId);
     }
 
     @PostMapping()
