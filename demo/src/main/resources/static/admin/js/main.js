@@ -49,9 +49,9 @@ async function createTableViagem(){
     hideWarnig();
 }
 
-function createTableMotorista(){
+async function createTableMotorista(){
     page = 5;
-    globalResouces.main = getFakeMotoristas();
+    globalResouces.main = await getResources("http://localhost:8080/motorista");
     let headers = Object.keys(globalResouces.main[0]);
 
     //load table motorista

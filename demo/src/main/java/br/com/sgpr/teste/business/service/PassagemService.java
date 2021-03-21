@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.sgpr.teste.business.entity.PassagensViagem;
-import br.com.sgpr.teste.business.entity.TempPassagem;
+import br.com.sgpr.teste.business.entity.Passageiro;
+import br.com.sgpr.teste.business.entity.Passagem;
 import br.com.sgpr.teste.business.entity.Viagem;
 import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
+import br.com.sgpr.teste.business.util.Mensagem;
 import br.com.sgpr.teste.data.PassagensViagemsRepository;
 import br.com.sgpr.teste.data.TempPassagemRepository;
 import br.com.sgpr.teste.data.ViagemRepository;
@@ -31,10 +33,19 @@ public class PassagemService {
     public Iterable<PassagensViagem> getUserPass(String userId) {
         return passagensViagensRepository.getUserPass(userId);
     }
+    
+    public Mensagem gerarPassagem(Passageiro passageiro, Viagem viagem) 
+    {
+    	System.out.println("Gerando passagem...");
+    	
+    	
+    
+    	return new Mensagem("Passagem gerada");
+    }
 
     public void cancelarViagem(String passId) throws BusinessExceptions{
         System.out.println("Cancelando a passagem " + passId);
-        TempPassagem pass = passagemRepository.findById(passId).orElseGet(() -> null);
+        Passagem pass = passagemRepository.findById(passId).orElseGet(() -> null);
         Viagem viagem = viagemRepository.findById(pass.getViagem()).orElseGet(() -> null);
 
         LocalDate viagemDate = LocalDate.parse(viagem.getData());

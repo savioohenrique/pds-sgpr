@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.sgpr.teste.business.entity.Rota;
-import br.com.sgpr.teste.business.entity.TempOnibus;
+import br.com.sgpr.teste.business.entity.Onibus;
 import br.com.sgpr.teste.business.entity.Viagem;
 import br.com.sgpr.teste.business.entity.VisaoViagens;
 import br.com.sgpr.teste.business.exceptions.BusinessExceptions;
@@ -37,7 +37,7 @@ public class ViagemService {
     public void saveViagem(Viagem novaViagem) throws BusinessExceptions{
 		System.out.println("Salvando nova viagem...");
 		validateViagem(novaViagem);
-		TempOnibus onibus = onibusRepository.findById(novaViagem.getOnibus()).orElseGet(() -> null);
+		Onibus onibus = onibusRepository.findById(novaViagem.getOnibus()).orElseGet(() -> null);
 		novaViagem.setAsssentosDisponiveis(onibus.getNumAssentos());
 		viagemRepository.save(novaViagem);
     }

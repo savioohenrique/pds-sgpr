@@ -7,23 +7,28 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "passagem")
-public class TempPassagem {
-    private String codValidacao;
-    private int viagem;
-    private int numAssento;
-    private String cpf;
-
-    @Id
+public class Passagem {
+	@Id
     @Column(name = "cod_validacao")
+    private String codValidacao;
+	
+	@Column(name="viagem")
+    private int viagem;
+	
+    @Column(name = "num_assento")
+    private int numAssento;
+    
+    @Column(name="cpf_dono")
+    private String cpf;
+    
+    
     public String getCodValidacao(){
         return codValidacao;
     }
 
-    @Column(name = "cod_validacao")
     public void setCodValidacao(String novoCodValidacao){
         codValidacao = novoCodValidacao;
     }
-
 
     public int getViagem() {
         return viagem;
@@ -33,17 +38,14 @@ public class TempPassagem {
         this.viagem = viagem;
     }
 
-    @Column(name = "num_assento")
     public int getNumAssento() {
         return numAssento;
     }
 
-    @Column(name = "num_assento")
     public void setNumAssento(int numAssento) {
         this.numAssento = numAssento;
     }
 
-    @Column(name = "cpf_dono")
     public String getCpf() {
         return cpf;
     }

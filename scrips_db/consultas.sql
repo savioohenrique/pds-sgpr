@@ -1,5 +1,5 @@
 create user 'springuser'@'%' identified by 'ThePassword321#';
-grant all on sgpr.* to 'springuser'@'%';
+grant all on sgpr18.* to 'springuser'@'%';
 
 select * from viagens;
 

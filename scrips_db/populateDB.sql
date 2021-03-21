@@ -1,4 +1,4 @@
-use sgpr;
+use sgpr18;
 /*Insere dados no banco*/
 
 insert into passageiro values('95819702409', 'Julio Cauã Cardoso', '131231231', 'Julio@gmail.com'), 

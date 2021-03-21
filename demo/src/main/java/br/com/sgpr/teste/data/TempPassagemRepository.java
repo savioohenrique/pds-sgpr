@@ -2,8 +2,8 @@ package br.com.sgpr.teste.data;
 
 import org.springframework.data.repository.CrudRepository;
 
-import br.com.sgpr.teste.business.entity.TempPassagem;
+import br.com.sgpr.teste.business.entity.Passagem;
 
-public interface TempPassagemRepository extends CrudRepository<TempPassagem, String> {
+public interface TempPassagemRepository extends CrudRepository<Passagem, String> {
     
 }
