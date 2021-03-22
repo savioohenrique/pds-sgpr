@@ -12,7 +12,7 @@ public class Onibus {
 	@Column(name="num_placa")
 	private String placa;
 	@Column(name="num_assentos")
-	private int assentos;
+	private int numAssentos;
 	@Column(name="tipo")
 	private String tipo;
 	
@@ -23,10 +23,10 @@ public class Onibus {
 		this.placa = placa;
 	}
 	public int getNumAssentos() {
-		return assentos;
+		return numAssentos;
 	}
 	public void setNum_assentos(int assentos) {
-		this.assentos = assentos;
+		this.numAssentos = assentos;
 	}
 	public String getTipo() {
 		return tipo;

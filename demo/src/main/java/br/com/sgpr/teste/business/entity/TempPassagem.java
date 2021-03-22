@@ -5,22 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "passagem_usadas")
-public class PassagemUsada {
+@Table(name = "passagem")
+public class TempPassagem {
     private String codValidacao;
     private int viagem;
     private int numAssento;
     private String cpf;
-
-    public PassagemUsada() {}
-
-    public PassagemUsada(Passagem pass) {
-        this.codValidacao = pass.getCodValidacao();
-        this.viagem = pass.getViagem();
-        this.numAssento = pass.getNumAssento();
-        this.cpf = pass.getCpf();
-    }
 
     @Id
     @Column(name = "cod_validacao")
@@ -28,6 +20,7 @@ public class PassagemUsada {
         return codValidacao;
     }
 
+    @Column(name = "cod_validacao")
     public void setCodValidacao(String novoCodValidacao){
         codValidacao = novoCodValidacao;
     }
@@ -46,6 +39,7 @@ public class PassagemUsada {
         return numAssento;
     }
 
+    @Column(name = "num_assento")
     public void setNumAssento(int numAssento) {
         this.numAssento = numAssento;
     }
@@ -58,5 +52,4 @@ public class PassagemUsada {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
 }

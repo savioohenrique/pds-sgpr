@@ -18,14 +18,14 @@ public class MotoristaService {
 	public String cadastrar(Motorista motorista) throws BusinessExceptions{
 		System.out.println("Cadastrando motorista...");
 		validateMotorista(motorista);
-//		motoristaRepository.save(motorista);
+		motoristaRepository.save(motorista);
 		return "Motorista cadastrado";
 	}
 
 	private void validateMotorista(Motorista motorista) throws BusinessExceptions{
 		ArrayList<String> listOfInvalidFeilds = new ArrayList<>();
 		
-		if (motoristaRepository.findById(motorista.getCpf()) != null ) {
+		if (motoristaRepository.findById(motorista.getCpf()) == null ) {
 			listOfInvalidFeilds.add("Já existe um motorista cadastrado com esse cpf.");
 		}
 		
@@ -33,23 +33,37 @@ public class MotoristaService {
 			listOfInvalidFeilds.add("CPF inválido.");
 		}
 		
+		if (motorista.getNome() == null) {
+			listOfInvalidFeilds.add("Nome inválido.");
+		}
+		
+		if (motorista.getEmail() == null) {
+			listOfInvalidFeilds.add("Email inválido.");
+		}
+		
 		if(listOfInvalidFeilds.size() > 0) {
             throw new BusinessExceptions(listOfInvalidFeilds);
         }
-		
 	}
 
 	public Iterable<Motorista> getMotoristas() {
 		return motoristaRepository.findAll();
 	}
 
-	public Optional<Motorista> getMotorista(String cpfMotorista) {
-		return motoristaRepository.findById(cpfMotorista);
-	}
-
-	public String deleteMotorista(String cpfMotorista) {
-		motoristaRepository.deleteById(cpfMotorista);
+	public void deleteMotorista(String cpfMotorista) throws BusinessExceptions{
+		ArrayList<String> listOfInvalidFeild = new ArrayList<>();
 		
-		return "Motorista deletado";
+		Optional<Motorista> motorista = motoristaRepository.findById(cpfMotorista);
+		
+		if (motorista.get().getCpf() == cpfMotorista) {
+			motoristaRepository.deleteById(cpfMotorista);
+			System.out.println("Motorista deletado");
+		}else {
+			listOfInvalidFeild.add("Não foi possível excluir o motorista.");
+		}
+		
+		if (listOfInvalidFeild.size() > 0) {
+			throw new BusinessExceptions(listOfInvalidFeild);
+		}
 	}
 }

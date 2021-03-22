@@ -1,24 +1,23 @@
 package br.com.sgpr.teste.business.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
-//import javax.persistence.Column;
 
 @Entity
 @Table( name="passageiro")
 public class Passageiro {
-	private String cpf;
-	private String nome;
-	private String telefone;
-	private String email;
-	
-	public Passageiro() {
-		
-	}
-	
 	@Id
-//	@Column(name = "cpf")
+	@Column(name="cpf")
+	private String cpf;
+	@Column(name="nome")
+	private String nome;
+	@Column(name="telefone")
+	private String telefone;
+	@Column(name="email")
+	private String email;
+
 	public String getCpf() {
 		return cpf;
 	}

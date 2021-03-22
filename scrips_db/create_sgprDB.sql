@@ -1,5 +1,5 @@
-create database sgpr18;
-use sgpr18;
+create database sgpr;
+use sgpr;
 
 create table passageiro(
 	cpf char(11), 
